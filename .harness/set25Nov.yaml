@@ -1,0 +1,26 @@
+inputSet:
+  identifier: "set25Nov"
+  pipeline:
+    identifier: "pipe456"
+    stages:
+    - stage:
+        identifier: "a34"
+        template:
+          templateInputs:
+            type: "Custom"
+            spec:
+              execution:
+                steps:
+                - step:
+                    identifier: "A34"
+                    template:
+                      templateInputs:
+                        type: "ShellScript"
+                        spec:
+                          source:
+                            type: "Inline"
+                            spec:
+                              script: "echo 'hi'"
+  name: "set25Nov"
+  orgIdentifier: "default"
+  projectIdentifier: "AmitTest"
