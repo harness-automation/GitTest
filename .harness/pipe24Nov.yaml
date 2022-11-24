@@ -1,0 +1,46 @@
+pipeline:
+  name: pipe24Nov
+  identifier: pipe24Nov
+  projectIdentifier: AmitTest
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: A23
+        identifier: A23
+        template:
+          templateRef: customStage23Nov
+          versionLabel: v1
+          templateInputs:
+            type: Custom
+            spec:
+              execution:
+                steps:
+                  - step:
+                      identifier: A34
+                      template:
+                        templateInputs:
+                          type: ShellScript
+                          spec:
+                            source:
+                              type: Inline
+                              spec:
+                                script: <+input>
+    - stage:
+        name: ghty
+        identifier: ghty
+        template:
+          templateRef: StageDefaultR2
+          templateInputs:
+            type: Approval
+            spec:
+              execution:
+                steps:
+                  - step:
+                      identifier: asdd
+                      template:
+                        templateInputs:
+                          type: HarnessApproval
+                          spec:
+                            approvers:
+                              userGroups: <+input>
