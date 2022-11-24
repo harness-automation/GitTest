@@ -1,0 +1,28 @@
+pipeline:
+  name: pipe456
+  identifier: pipe456
+  projectIdentifier: AmitTest
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: a34
+        identifier: a34
+        template:
+          templateRef: customStage23Nov
+          versionLabel: v1
+          templateInputs:
+            type: Custom
+            spec:
+              execution:
+                steps:
+                  - step:
+                      identifier: A34
+                      template:
+                        templateInputs:
+                          type: ShellScript
+                          spec:
+                            source:
+                              type: Inline
+                              spec:
+                                script: <+input>
