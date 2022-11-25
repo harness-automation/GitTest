@@ -1,0 +1,30 @@
+pipeline:
+  name: piper567788
+  identifier: piper567788
+  projectIdentifier: TracTableCheck
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: Sdf4
+        identifier: Sdf4
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: tgh
+                  identifier: tgh
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: <+input>
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
