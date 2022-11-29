@@ -1,0 +1,29 @@
+template:
+  name: pipeInGitRepo
+  identifier: pipeInGitRepo
+  versionLabel: "1"
+  type: Pipeline
+  projectIdentifier: Demo2Check29Nov
+  orgIdentifier: default
+  tags: {}
+  spec:
+    stages:
+      - stage:
+          name: fg5
+          identifier: fg5
+          template:
+            templateRef: StageInGitTestRepo
+            versionLabel: "1"
+            templateInputs:
+              type: Custom
+              spec:
+                execution:
+                  steps:
+                    - step:
+                        identifier: erd
+                        type: ShellScript
+                        spec:
+                          source:
+                            type: Inline
+                            spec:
+                              script: <+input>
