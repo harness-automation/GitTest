@@ -1,0 +1,61 @@
+inputSet:
+  identifier: "set2in29Nov"
+  name: "set2in29Nov"
+  orgIdentifier: "default"
+  projectIdentifier: "Demo2Check29Nov"
+  pipeline:
+    identifier: "p2Nov29"
+    stages:
+    - parallel:
+      - stage:
+          identifier: "fg"
+          template:
+            templateInputs:
+              type: "Custom"
+              spec:
+                execution:
+                  steps:
+                  - step:
+                      identifier: "r5"
+                      template:
+                        templateInputs:
+                          type: "ShellScript"
+                          spec:
+                            source:
+                              type: "Inline"
+                              spec:
+                                script: "echo 'hi'"
+      - stage:
+          identifier: "ee"
+          template:
+            templateInputs:
+              type: "Custom"
+              spec:
+                execution:
+                  steps:
+                  - step:
+                      identifier: "r5"
+                      template:
+                        templateInputs:
+                          type: "ShellScript"
+                          spec:
+                            source:
+                              type: "Inline"
+                              spec:
+                                script: "echo 'hi'"
+    - stage:
+        identifier: "ty"
+        template:
+          templateInputs:
+            type: "Custom"
+            spec:
+              execution:
+                steps:
+                - step:
+                    identifier: "erd"
+                    type: "ShellScript"
+                    spec:
+                      source:
+                        type: "Inline"
+                        spec:
+                          script: "echo 'hi'"
