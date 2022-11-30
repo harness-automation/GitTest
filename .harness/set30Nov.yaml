@@ -1,0 +1,24 @@
+inputSet:
+  identifier: "set30Nov"
+  name: "set30Nov"
+  orgIdentifier: "default"
+  projectIdentifier: "AmitTest"
+  pipeline:
+    identifier: "Nov30Pipe"
+    stages:
+    - stage:
+        identifier: "gh5"
+        template:
+          templateInputs:
+            type: "Custom"
+            spec:
+              execution:
+                steps:
+                - step:
+                    identifier: "ShellScript"
+                    type: "ShellScript"
+                    spec:
+                      source:
+                        type: "Inline"
+                        spec:
+                          script: "echo 'hi'"
