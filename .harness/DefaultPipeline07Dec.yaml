@@ -1,0 +1,21 @@
+pipeline:
+  name: DefaultPipeline07Dec
+  identifier: DefaultPipeline07Dec
+  projectIdentifier: TractableTest123
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: ght
+        identifier: ght
+        template:
+          templateRef: DeployType
+          versionLabel: "1"
+          templateInputs:
+            type: Deployment
+            spec:
+              service:
+                serviceRef: <+input>
+                serviceInputs: <+input>
+              environment:
+                infrastructureDefinitions: <+input>
