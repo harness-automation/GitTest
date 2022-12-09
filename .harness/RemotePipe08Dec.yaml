@@ -48,3 +48,14 @@ pipeline:
                           spec:
                             script: <+input>
         tags: {}
+    - stage:
+        name: rty
+        identifier: rty
+        template:
+          templateRef: git_testtemplate
+          versionLabel: "1"
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.github_repo_http_delegate_connector
+        build: <+input>
