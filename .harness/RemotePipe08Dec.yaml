@@ -26,3 +26,25 @@ pipeline:
                               type: Inline
                               spec:
                                 script: <+input>
+    - stage:
+        name: erf
+        identifier: erf
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  name: fgr
+                  identifier: fgr
+                  template:
+                    templateRef: customTemplate
+                    versionLabel: v1
+                    templateInputs:
+                      type: ShellScript
+                      spec:
+                        source:
+                          type: Inline
+                          spec:
+                            script: <+input>
+        tags: {}
