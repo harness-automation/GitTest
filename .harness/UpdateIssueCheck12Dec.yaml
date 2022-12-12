@@ -1,0 +1,22 @@
+pipeline:
+  name: UpdateIssueCheck12Dec
+  identifier: UpdateIssueCheck12Dec
+  projectIdentifier: AmitTest
+  orgIdentifier: GitXOrg
+  tags: {}
+  stages:
+    - stage:
+        name: A23
+        identifier: A23
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: Wait
+                  name: a1
+                  identifier: a1
+                  spec:
+                    duration: 10m
+        tags: {}
