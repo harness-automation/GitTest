@@ -6,8 +6,8 @@ pipeline:
   tags: {}
   stages:
     - stage:
-        name: adsa
-        identifier: adsa
+        name: adsaa
+        identifier: adsaa
         template:
           templateRef: customStage23Nov
           versionLabel: v1
