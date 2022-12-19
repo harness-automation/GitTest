@@ -6,7 +6,7 @@ pipeline:
   tags: {}
   stages:
     - stage:
-        name: adsaaaaaaa1
+        name: adsaaaa
         identifier: adsaaaaaaa1
         template:
           templateRef: customStage23Nov
