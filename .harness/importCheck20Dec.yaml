@@ -1,0 +1,28 @@
+pipeline:
+  name: RemotePipe08Dec
+  identifier: RemotePipe08Dec
+  projectIdentifier: AmitTest
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: adsaaaaaaa1
+        identifier: adsaaaaaaa1
+        template:
+          templateRef: FailedTemplate
+          versionLabel: v1
+          templateInputs:
+            type: Custom
+            spec:
+              execution:
+                steps:
+                  - step:
+                      identifier: A34
+                      template:
+                        templateInputs:
+                          type: ShellScript
+                          spec:
+                            source:
+                              type: Inline
+                              spec:
+                                script: <+input>
