@@ -1,6 +1,6 @@
 pipeline:
-  name: import check 2
-  identifier: import_check_2
+  name: checkImport
+  identifier: checkImport
   projectIdentifier: AmitTest
   orgIdentifier: default
   tags: {}
