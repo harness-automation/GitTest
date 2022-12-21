@@ -1,6 +1,6 @@
 pipeline:
-  name: RemotePipe08Dec
-  identifier: RemotePipe08Dec
+  name: importCheck20Dec
+  identifier: importCheck20Dec
   projectIdentifier: AmitTest
   orgIdentifier: default
   tags: {}
