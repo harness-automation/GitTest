@@ -11,10 +11,9 @@ pipeline:
         template:
           templateRef: Nov22Stage
           versionLabel: v1
-   - stage:
+    - stage:
         name: stage2
         identifier: stage2
         template:
           templateRef: Nov22Stage
-          versionLabel: v1       
-          
+          versionLabel: v1
