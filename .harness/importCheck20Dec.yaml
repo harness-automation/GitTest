@@ -6,23 +6,25 @@ pipeline:
   tags: {}
   stages:
     - stage:
-        name: adsaaaaaaa1
-        identifier: adsaaaaaaa1
-        template:
-          templateRef: FailedTemplate
-          versionLabel: v1
-          templateInputs:
-            type: Custom
-            spec:
-              execution:
-                steps:
-                  - step:
-                      identifier: A34
-                      template:
-                        templateInputs:
-                          type: ShellScript
-                          spec:
-                            source:
-                              type: Inline
-                              spec:
-                                script: <+input>
+        name: st1
+        identifier: st1
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: Shell Script_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: <+input>
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
