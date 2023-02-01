@@ -33,4 +33,4 @@ inputSet:
                       infrastructureDefinition:
                         type: KubernetesDirect
                         spec:
-                          connectorRef: account.k8s_acc_con
+                          connectorRef: <+input>
