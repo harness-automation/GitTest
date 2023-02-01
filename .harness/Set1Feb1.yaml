@@ -22,7 +22,7 @@ inputSet:
                               source:
                                 type: Inline
                                 spec:
-                                  script: echo 'hi'
+                                  script: echo 'hi updated check'
           - stage:
               identifier: stage2
               template:
