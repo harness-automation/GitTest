@@ -34,3 +34,15 @@ inputSet:
                         type: KubernetesDirect
                         spec:
                           connectorRef: <+input>
+          - stage:
+              identifier: stage3
+              template:
+                templateInputs:
+                  type: Deployment
+                  spec:
+                    infrastructure:
+                      infrastructureDefinition:
+                        type: KubernetesDirect
+                        spec:
+                          connectorRef: <+input>
+                          
