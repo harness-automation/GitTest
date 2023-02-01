@@ -12,19 +12,6 @@ pipeline:
             template:
               templateRef: stageTemplateRepo
               versionLabel: "1"
-              templateInputs:
-                type: Custom
-                spec:
-                  execution:
-                    steps:
-                      - step:
-                          identifier: ShellScript_1
-                          type: ShellScript
-                          spec:
-                            source:
-                              type: Inline
-                              spec:
-                                script: <+input>
         - stage:
             name: stage2
             identifier: stage2
