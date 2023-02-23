@@ -19,4 +19,4 @@ inputSet:
                       source:
                         type: Inline
                         spec:
-                          script: echo 'update'
+                          script: echo 'update at prod'
