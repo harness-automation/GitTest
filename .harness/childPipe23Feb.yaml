@@ -1,0 +1,27 @@
+pipeline:
+  name: childPipe23Feb
+  identifier: childPipe23Feb
+  projectIdentifier: AmitTest
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: S123
+        identifier: S12
+        template:
+          templateRef: stageTemplateRepo
+          versionLabel: "1"
+          templateInputs:
+            type: Custom
+            spec:
+              execution:
+                steps:
+                  - step:
+                      identifier: ShellScript_1
+                      type: ShellScript
+                      spec:
+                        source:
+                          type: Inline
+                          spec:
+                            script: <+input>
+                      timeout: <+input>
