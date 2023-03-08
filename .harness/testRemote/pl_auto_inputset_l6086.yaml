@@ -1,9 +1,9 @@
 inputSet:
   name: pl_auto_inputset_lAAe9
-  identifier: pl_auto_inputset_lAAe9
   tags: {}
+  identifier: pl_auto_inputset_lAAe9
   orgIdentifier: Simlified_Git_sync
-  projectIdentifier: SimplifiedGitSync_Do_Not_Delete   #need to be changed
+  projectIdentifier: SimplifiedGitSync_Do_Not_Delete
   pipeline:
     identifier: pl_auto_pipeline_A5uSP
     stages:
@@ -20,5 +20,4 @@ inputSet:
                       source:
                         type: Inline
                         spec:
-                          script: echo 'hi'
-
+                          script: echo 'hi change'
