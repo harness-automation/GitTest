@@ -6,23 +6,24 @@ pipeline:
   tags: {}
   stages:
     - stage:
-        name: S2
-        identifier: S2
-        template:
-          templateRef: stage1_march10
-          versionLabel: "1"
-          templateInputs:
-            type: Custom
-            spec:
-              execution:
-                steps:
-                  - step:
-                      identifier: s1
-                      template:
-                        templateInputs:
-                          type: ShellScript
+        name: S1
+        identifier: S1
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  name: q1
+                  identifier: q1
+                  template:
+                    templateRef: step1_march10
+                    versionLabel: "1"
+                    templateInputs:
+                      type: ShellScript
+                      spec:
+                        source:
+                          type: Inline
                           spec:
-                            source:
-                              type: Inline
-                              spec:
-                                script: <+input>
+                            script: <+input>
+        tags: {}
