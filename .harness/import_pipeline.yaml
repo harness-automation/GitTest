@@ -1,0 +1,37 @@
+pipeline:
+  name: import_pipeline
+  identifier: import_pipeline
+  projectIdentifier: nv_project
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: S1
+        identifier: S1
+        description: ""
+        type: Approval
+        spec:
+          execution:
+            steps:
+              - step:
+                  name: S1
+                  identifier: S1
+                  type: HarnessApproval
+                  timeout: 40m
+                  spec:
+                    approvalMessage: |-
+                      Please review the following information
+                      and approve the pipeline progression
+                    includePipelineExecutionHistory: true
+                    approvers:
+                      minimumCount: 1
+                      disallowPipelineExecutor: false
+                      userGroups: <+input>
+                    approverInputs: []
+              - step:
+                  type: Wait
+                  name: Wait_1
+                  identifier: Wait_1
+                  spec:
+                    duration: 40m
+        tags: {}
