@@ -28,4 +28,10 @@ pipeline:
                       disallowPipelineExecutor: false
                       userGroups: <+input>
                     approverInputs: []
+              - step:
+                  type: Wait
+                  name: Wait_1
+                  identifier: Wait_1
+                  spec:
+                    duration: 40m
         tags: {}
