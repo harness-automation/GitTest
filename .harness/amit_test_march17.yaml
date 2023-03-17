@@ -1,0 +1,31 @@
+pipeline:
+  name: amit test march17
+  identifier: amit_test_march17
+  projectIdentifier: nv_project
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: S1
+        identifier: S1
+        description: ""
+        type: Approval
+        spec:
+          execution:
+            steps:
+              - step:
+                  name: S1
+                  identifier: S1
+                  type: HarnessApproval
+                  timeout: 1m
+                  spec:
+                    approvalMessage: |-
+                      Please review the following information
+                      and approve the pipeline progression
+                    includePipelineExecutionHistory: true
+                    approvers:
+                      minimumCount: 1
+                      disallowPipelineExecutor: false
+                      userGroups: <+input>
+                    approverInputs: []
+        tags: {}
