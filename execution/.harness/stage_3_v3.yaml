@@ -1,0 +1,37 @@
+template:
+  name: stage 3
+  identifier: stage_3
+  versionLabel: v3
+  type: Stage
+  tags: {}
+  spec:
+    type: Approval
+    spec:
+      execution:
+        steps:
+          - step:
+              name: t1
+              identifier: t1
+              template:
+                templateRef: account.step_5
+                versionLabel: v5
+                templateInputs:
+                  type: ShellScript
+                  spec:
+                    source:
+                      type: Inline
+                      spec:
+                        script: <+input>
+          - step:
+              name: rt2
+              identifier: rt2
+              template:
+                templateRef: account.step_6
+                versionLabel: v6
+                templateInputs:
+                  type: ShellScript
+                  spec:
+                    source:
+                      type: Inline
+                      spec:
+                        script: <+input>
