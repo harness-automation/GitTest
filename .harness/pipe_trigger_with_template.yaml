@@ -1,0 +1,13 @@
+pipeline:
+  name: pipe trigger with template
+  identifier: pipe_trigger_with_template
+  projectIdentifier: AmitTest
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: S1
+        identifier: S1
+        template:
+          templateRef: stage1_march10
+          versionLabel: "1"
