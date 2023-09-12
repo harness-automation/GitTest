@@ -10,7 +10,7 @@ template:
       execution:
         steps:
           - step:
-              name: zz
+              name: me
               identifier: zz
               template:
                 templateRef: account.zz
