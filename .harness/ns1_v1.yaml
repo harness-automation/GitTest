@@ -1,0 +1,15 @@
+template:
+  name: pl_auto_pipeline_OMnG1
+  identifier: pl_auto_pipeline_OMnG1
+  versionLabel: v3
+  type: Pipeline
+  tags: {}
+  spec:
+    stages:
+      - stage:
+          name: mm
+          identifier: mm
+          template:
+            templateRef: account.pl_auto_template_Nk48j
+            versionLabel: v3
+            gitBranch: main
