@@ -1,0 +1,25 @@
+template:
+  name: stg
+  identifier: stg
+  versionLabel: v1
+  type: Stage
+  tags: {}
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - step:
+              type: ShellScript
+              name: ShellScript_1
+              identifier: ShellScript_1
+              spec:
+                shell: Bash
+                onDelegate: true
+                source:
+                  type: Inline
+                  spec:
+                    script: echo hy
+                environmentVariables: []
+                outputVariables: []
+              timeout: 10m
