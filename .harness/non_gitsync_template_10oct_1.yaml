@@ -1,0 +1,19 @@
+template:
+  name: non gitsync template 10oct
+  type: Step
+  projectIdentifier: AmitTest
+  orgIdentifier: default
+  spec:
+    type: ShellScript
+    spec:
+      shell: Bash
+      onDelegate: true
+      source:
+        type: Inline
+        spec:
+          script: <+input>
+      environmentVariables: []
+      outputVariables: []
+    timeout: 10m
+  identifier: non_gitsync_template_10oct
+  versionLabel: "1"
