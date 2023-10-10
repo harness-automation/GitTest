@@ -14,17 +14,17 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: ShellScript
                   name: ShellScript_1
                   identifier: ShellScript_1
-                  spec:
-                    shell: Bash
-                    onDelegate: true
-                    source:
-                      type: Inline
+                  template:
+                    templateRef: non_gitsync_template_10oct
+                    versionLabel: "1"
+                    gitBranch: 8march
+                    templateInputs:
+                      type: ShellScript
                       spec:
-                        script: <+input>
-                    environmentVariables: []
-                    outputVariables: []
-                  timeout: 10m
+                        source:
+                          type: Inline
+                          spec:
+                            script: <+input>
         tags: {}
