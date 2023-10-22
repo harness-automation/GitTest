@@ -1,6 +1,7 @@
 infrastructureDefinition:
   name: infraRemote1
   identifier: infraRemote1
+  description: test12
   orgIdentifier: default
   projectIdentifier: Jira
   environmentRef: test1_remote
