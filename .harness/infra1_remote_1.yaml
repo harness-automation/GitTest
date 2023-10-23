@@ -9,7 +9,7 @@ infrastructureDefinition:
   deploymentType: Kubernetes
   type: KubernetesDirect
   spec:
-    connectorRef: account.tck8s
-    namespace: default
+    connectorRef: <+input>
+    namespace: <+namesapce>
     releaseName: release-<+INFRA_KEY_SHORT_ID>
   allowSimultaneousDeployments: false
