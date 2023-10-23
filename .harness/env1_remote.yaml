@@ -1,0 +1,6 @@
+environment:
+  name: env1_remote
+  identifier: env1_remote
+  accountId: px7xd_BFRCi-pfWPYXVjvw
+  orgIdentifier: default
+  type: PreProduction
