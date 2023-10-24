@@ -1,5 +1,5 @@
 infrastructureDefinition:
-  name: test_infra1
+  name: test_infra123
   identifier: test_infra1
   orgIdentifier: default
   environmentRef: env1_remote
