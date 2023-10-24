@@ -1,6 +1,7 @@
 infrastructureDefinition:
   name: infra123_remote
   identifier: infra123_remote
+  description: test1
   orgIdentifier: default
   environmentRef: env1_remote
   deploymentType: Kubernetes
