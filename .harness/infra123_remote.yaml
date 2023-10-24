@@ -1,0 +1,12 @@
+infrastructureDefinition:
+  name: infra123_remote
+  identifier: infra123_remote
+  orgIdentifier: default
+  environmentRef: env1_remote
+  deploymentType: Kubernetes
+  type: KubernetesDirect
+  spec:
+    connectorRef: account.tck8s
+    namespace: default
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
+  allowSimultaneousDeployments: true
