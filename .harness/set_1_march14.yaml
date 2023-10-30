@@ -1,0 +1,27 @@
+inputSet:
+  name: set 1 march14
+  tags: {}
+  identifier: set_1_march14
+  orgIdentifier: default
+  projectIdentifier: AmitTest
+  pipeline:
+    identifier: pipe3_march10
+    stages:
+      - stage:
+          identifier: S1
+          template:
+            templateInputs:
+              type: Custom
+              spec:
+                execution:
+                  steps:
+                    - step:
+                        identifier: s1
+                        template:
+                          templateInputs:
+                            type: ShellScript
+                            spec:
+                              source:
+                                type: Inline
+                                spec:
+                                  script: echo 'hi updated'
