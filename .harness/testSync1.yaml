@@ -23,7 +23,7 @@ pipeline:
                     source:
                       type: Inline
                       spec:
-                        script: echo 'hi 12345'
+                        script: echo 'hi 12345dvddfgf'
                     environmentVariables: []
                     outputVariables: []
                   timeout: 10m
