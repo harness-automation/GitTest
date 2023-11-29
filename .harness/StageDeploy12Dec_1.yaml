@@ -1,0 +1,50 @@
+template:
+  name: StageDeploy12Dec
+  identifier: StageDeploy12Dec
+  versionLabel: "1"
+  type: Stage
+  projectIdentifier: AmitTest
+  orgIdentifier: default
+  tags: {}
+  spec:
+    type: Deployment
+    spec:
+      serviceConfig:
+        serviceRef: abc
+        serviceDefinition:
+          spec:
+            variables: []
+          type: Kubernetes
+      infrastructure:
+        environmentRef: preqa
+        infrastructureDefinition:
+          type: KubernetesDirect
+          spec:
+            connectorRef: account.k8s
+            namespace: qwe
+            releaseName: release-<+INFRA_KEY>
+        allowSimultaneousDeployments: false
+      execution:
+        steps:
+          - step:
+              name: Rollout Deployment
+              identifier: rolloutDeployment
+              type: K8sRollingDeploy
+              timeout: 10m
+              spec:
+                skipDryRun: false
+                pruningEnabled: false
+        rollbackSteps:
+          - step:
+              name: Rollback Rollout Deployment
+              identifier: rollbackRolloutDeployment
+              type: K8sRollingRollback
+              timeout: 10m
+              spec:
+                pruningEnabled: false
+    failureStrategies:
+      - onFailure:
+          errors:
+            - AllErrors
+          action:
+            type: StageRollback

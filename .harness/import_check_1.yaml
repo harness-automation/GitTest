@@ -1,0 +1,25 @@
+pipeline:
+  name: import check 1
+  identifier: import_check_1
+  projectIdentifier: AmitTest
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: stage1
+        identifier: stage1
+        template:
+          templateRef: StageCheckTemplate
+          versionLabel: v1
+          templateInputs:
+            type: Deployment
+            spec:
+              serviceConfig:
+                serviceRef: <+input>
+              infrastructure:
+                environmentRef: <+input>
+                infrastructureDefinition:
+                  type: KubernetesDirect
+                  spec:
+                    connectorRef: <+input>
+                    namespace: <+input>
