@@ -1,0 +1,10 @@
+pipeline:
+  name: testing
+  identifier: testing
+  template:
+    templateRef: account.pl_auto_pipeline_3LLdV
+    versionLabel: v3
+    gitBranch: main
+  tags: {}
+  projectIdentifier: testAR7
+  orgIdentifier: default
