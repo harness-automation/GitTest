@@ -1,0 +1,9 @@
+overlayInputSet:
+  name: overlay1
+  identifier: overlay1
+  orgIdentifier: default
+  projectIdentifier: AmitTest
+  pipelineIdentifier: pipe3_march10
+  inputSetReferences:
+    - set_1_march14
+  tags: {}
