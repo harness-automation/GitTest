@@ -1,0 +1,59 @@
+template:
+  name: FInd Delegate
+  type: Stage
+  projectIdentifier: AmitTest123
+  orgIdentifier: default
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - step:
+              type: ShellScript
+              name: Find Delegate
+              identifier: Find_Delegate
+              spec:
+                shell: Bash
+                onDelegate: true
+                source:
+                  type: Inline
+                  spec:
+                    script: |-
+                      echo $Environment
+
+                      if [[ "$Environment" == "Devspaces" ]]; then
+                        export delegate_name="infra-evol-provisioner"
+                        export DEPLOYMENT_ENV="devspaces"
+                      fi 
+
+                      # if [[ "$Environment" == "QA" ]]; then 
+                      #   export delegate_name="infra-qa-delegate"
+                      #   export DEPLOYMENT_ENV="harness-qa"
+                      # fi
+
+                      if [[ "$Environment" == "Harness Zero" ]]; then 
+                        export delegate_name="infra-harness0-delegate"
+                        export DEPLOYMENT_ENV="harness-zero"
+                      fi
+
+                      echo $delegate_name
+                environmentVariables:
+                  - name: Environment
+                    type: String
+                    value: <+stage.variables.Environment>
+                outputVariables:
+                  - name: delegate_name
+                    type: String
+                    value: delegate_name
+                  - name: DEPLOYMENT_ENV
+                    type: String
+                    value: DEPLOYMENT_ENV
+              timeout: 10m
+    variables:
+      - name: Environment
+        type: String
+        description: ""
+        required: true
+        value: <+input>.default(Devspaces).allowedValues(Devspaces,QA,Harness Zero)
+  identifier: FInd_Delegate
+  versionLabel: v1
