@@ -6,11 +6,11 @@ pipeline:
   tags: {}
   stages:
     - stage:
-        name: S12
-        identifier: S12
+        name: S1
+        identifier: S1
         tags: {}
         template:
-          templateRef: template5Jan
+          templateRef: TestTemplate123
           versionLabel: "1"
           templateInputs:
             type: Custom
