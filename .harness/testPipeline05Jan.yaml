@@ -8,20 +8,23 @@ pipeline:
     - stage:
         name: S1
         identifier: S1
-        tags: {}
-        template:
-          templateRef: TestTemplate123
-          versionLabel: "1"
-          templateInputs:
-            type: Custom
-            spec:
-              execution:
-                steps:
-                  - step:
-                      identifier: ShellScript_1
-                      type: ShellScript
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
                       spec:
-                        source:
-                          type: Inline
-                          spec:
-                            script: <+input>
+                        script: zxvc
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
