@@ -1,0 +1,25 @@
+template:
+  name: PipelineRemote
+  identifier: PipelineRemote
+  versionLabel: v12
+  type: Pipeline
+  projectIdentifier: SimplifiedGitSync_Do_Not_Delete
+  orgIdentifier: Simlified_Git_sync
+  tags: {}
+  spec:
+    stages:
+      - stage:
+          name: S1
+          identifier: S1
+          description: ""
+          type: Custom
+          spec:
+            execution:
+              steps:
+                - step:
+                    name: S123
+                    identifier: S123
+                    template:
+                      templateRef: StepRemo5
+                      versionLabel: v1
+          tags: {}
