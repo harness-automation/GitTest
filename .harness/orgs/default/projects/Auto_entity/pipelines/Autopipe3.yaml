@@ -2,7 +2,7 @@ pipeline:
   name: Autopipe3
   identifier: Autopipe3
   projectIdentifier: Auto_entity
-  orgIdentifier: default
+  orgIdentifier: Pipelines_NonK8s_Org_NG
   tags: {}
   stages:
     - stage:
