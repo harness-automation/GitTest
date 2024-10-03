@@ -1,0 +1,14 @@
+infrastructureDefinition:
+  name: infraRemote1
+  identifier: infraRemote1
+  description: test12
+  orgIdentifier: default
+  projectIdentifier: Jira
+  environmentRef: test1_remote
+  deploymentType: Kubernetes
+  type: KubernetesDirect
+  spec:
+    connectorRef: <+input>
+    namespace: <+input>
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
+  allowSimultaneousDeployments: false

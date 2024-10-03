@@ -1,0 +1,15 @@
+template:
+  name: ns
+  identifier: ns
+  versionLabel: v1
+  type: Pipeline
+  tags: {}
+  spec:
+    stages:
+      - stage:
+          name: ss
+          identifier: ss
+          template:
+            templateRef: account.pl_auto_template_Nk48j
+            versionLabel: v3
+            gitBranch: main

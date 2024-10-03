@@ -1,0 +1,114 @@
+pipeline:
+  name: Cluster Maintenance
+  identifier: Setup_Cluster
+  projectIdentifier: AmitTest123
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: Find Delegate
+        identifier: Find_Delegate
+        template:
+          templateRef: FInd_Delegate
+          versionLabel: v1
+          templateInputs:
+            type: Custom
+            variables:
+              - name: Environment
+                type: String
+                value: <+input>.default(Devspaces).allowedValues(Devspaces,QA,Harness Zero)
+    - stage:
+        name: Infra
+        identifier: Infra
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: Stage 2
+                  identifier: Stage_3
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: |
+                          #!/bin/bash -x
+
+                          ####################### INPUT SET ########################
+                          export CLUSTER=<+pipeline.variables.CLUSTER>
+                          BRANCH=<+pipeline.variables.BRANCH>
+                          GITHUB_SECRET=<+pipeline.variables.GITHUB_ACCESS_TOKEN>
+                          ACTION=<+pipeline.variables.action>
+                          #########################################################
+
+                          echo "running stage2 ${ACTION}"
+
+                          echo "gcloud auth list"
+                          gcloud auth list
+
+
+                          BASEDIR=`pwd`
+                          WORKDIR=`mktemp -d "stage-1.XXXXXX"`
+                          cd $WORKDIR
+
+                          ############################################### CLONE REPO #######################################
+                          git config --global user.email "bot@harness.io"
+                          git config --global user.name "bot-harness"
+
+                          git clone  https://bot-harness:${GITHUB_SECRET}@github.com/wings-software/harness-pl-infra.git
+                          cd harness-pl-infra
+                          #################################################################################################
+
+                          HARNESS_PL_DIR=`pwd`
+                          HARNESS_PL_SYSTEM_DIR="${HARNESS_PL_DIR}/system"
+
+                          ###################################################################################################
+                          ./system/scripts/stage2.sh ${ACTION}
+
+                          cd ${BASEDIR}
+                          rm -fr ${WORKDIR}
+                    environmentVariables:
+                      - name: DEPLOYMENT_ENV
+                        type: String
+                        value: <+pipeline.stages.Find_Delegate.spec.execution.steps.Find_Delegate.output.outputVariables.DEPLOYMENT_ENV>
+                    outputVariables: []
+                  timeout: 4h
+                  failureStrategies:
+                    - onFailure:
+                        errors:
+                          - AllErrors
+                        action:
+                          type: Retry
+                          spec:
+                            retryCount: 1
+                            retryIntervals:
+                              - 1m
+                            onRetryFailure:
+                              action:
+                                type: MarkAsFailure
+        tags: {}
+        delegateSelectors:
+          - <+pipeline.stages.Find_Delegate.spec.execution.steps.Find_Delegate.output.outputVariables.delegate_name>
+  variables:
+    - name: BRANCH
+      type: String
+      description: ""
+      value: master
+    - name: CLUSTER
+      type: String
+      description: Name of the cluster to be created
+      required: true
+      value: <+input>
+    - name: GITHUB_ACCESS_TOKEN
+      type: Secret
+      description: ""
+      value: account.githubbotharnesstoken
+    - name: action
+      type: String
+      description: Terraform Action to Execute (apply/plan/destroy)
+      required: false
+      value: <+input>.allowedValues(apply,plan,destroy)
