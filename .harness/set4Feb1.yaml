@@ -1,0 +1,20 @@
+inputSet:
+  name: set4Feb1
+  identifier: set4Feb1
+  orgIdentifier: default
+  projectIdentifier: AmitTest
+  pipeline:
+    identifier: Pipe2Feb1
+    stages:
+      - parallel:
+          - stage:
+              identifier: stage2
+              template:
+                templateInputs:
+                  type: Deployment
+                  spec:
+                    infrastructure:
+                      infrastructureDefinition:
+                        type: KubernetesDirect
+                        spec:
+                          connectorRef: <+input>
