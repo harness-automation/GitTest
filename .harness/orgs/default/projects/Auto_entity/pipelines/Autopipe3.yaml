@@ -1,0 +1,58 @@
+pipeline:
+  name: Autopipe3
+  identifier: Autopipe3
+  projectIdentifier: Auto_entity
+  orgIdentifier: Pipelines_NonK8s_Org_NG
+  tags: {}
+  stages:
+    - stage:
+        name: s1
+        identifier: s1
+        description: ""
+        type: Deployment
+        spec:
+          deploymentType: Kubernetes
+          service:
+            serviceRef: org.orgService1
+          environment:
+            environmentRef: infra1
+            deployToAll: false
+            infrastructureDefinitions:
+              - identifier: infra2
+          execution:
+            steps:
+              - parallel:
+                  - step:
+                      name: st1
+                      identifier: st1
+                      template:
+                        templateRef: org.orgStepTemplate1
+                        versionLabel: "1"
+                  - step:
+                      type: ShellScript
+                      name: ShellScript_1
+                      identifier: ShellScript_1
+                      spec:
+                        shell: Bash
+                        executionTarget: {}
+                        source:
+                          type: Inline
+                          spec:
+                            script: <+input>
+                        environmentVariables: []
+                        outputVariables: []
+                      timeout: 10m
+              - step:
+                  name: st2
+                  identifier: st2
+                  template:
+                    templateRef: stepTemplate1
+                    versionLabel: v1
+            rollbackSteps: []
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: MarkAsSuccess

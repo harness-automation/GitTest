@@ -1,0 +1,11 @@
+infrastructureDefinition:
+  name: inf_acc_remote
+  identifier: inf_acc_remote
+  environmentRef: NGPipeAutodseECpged0
+  deploymentType: Kubernetes
+  type: KubernetesDirect
+  spec:
+    connectorRef: account.KubernetesAccLvlConnectorForAutomationTest
+    namespace: default
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
+  allowSimultaneousDeployments: true
