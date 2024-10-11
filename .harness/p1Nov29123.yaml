@@ -1,0 +1,26 @@
+pipeline:
+  name: p1Nov29123
+  identifier: p1Nov29123
+  projectIdentifier: demo_3_git_sync
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: okui
+        identifier: okui
+        template:
+          templateRef: Stage1Nov291
+          versionLabel: "1"
+          templateInputs:
+            type: Custom
+            spec:
+              execution:
+                steps:
+                  - step:
+                      identifier: der
+                      type: ShellScript
+                      spec:
+                        source:
+                          type: Inline
+                          spec:
+                            script: <+input>

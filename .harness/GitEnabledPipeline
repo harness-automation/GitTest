@@ -1,0 +1,26 @@
+pipeline:
+  name: Nov30Pipe
+  identifier: Nov30Pipe
+  projectIdentifier: AmitTest
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: gh5
+        identifier: gh5
+        template:
+          templateRef: Stage25Nov
+          versionLabel: "1"
+          templateInputs:
+            type: Custom
+            spec:
+              execution:
+                steps:
+                  - step:
+                      identifier: ShellScript
+                      type: ShellScript
+                      spec:
+                        source:
+                          type: Inline
+                          spec:
+                            script: <+input>
