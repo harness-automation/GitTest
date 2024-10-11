@@ -1,0 +1,24 @@
+inputSet:
+  name: inpset2
+  tags: {}
+  identifier: inpset2
+  orgIdentifier: default
+  projectIdentifier: Auto_entity
+  pipeline:
+    identifier: Autopipe3
+    stages:
+      - stage:
+          identifier: s1
+          type: Deployment
+          spec:
+            execution:
+              steps:
+                - parallel:
+                    - step:
+                        identifier: ShellScript_1
+                        type: ShellScript
+                        spec:
+                          source:
+                            type: Inline
+                            spec:
+                              script: echo 'hi'
