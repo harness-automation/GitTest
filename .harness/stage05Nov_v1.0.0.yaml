@@ -13,7 +13,7 @@ template:
       environment:
         environmentRef: <+input>
         deployToAll: false
-        environmentInputs: <+input>
+        environmentInputs: <+input>.default(abc)
         serviceOverrideInputs: <+input>
         infrastructureDefinitions: <+input>
       service:
