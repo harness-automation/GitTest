@@ -1,0 +1,35 @@
+template:
+  name: pipeline05Nov
+  identifier: pipeline05Nov
+  versionLabel: v1.0.0
+  type: Pipeline
+  projectIdentifier: AmitTest
+  orgIdentifier: Pipelines_NonK8s_Org_NG
+  tags: {}
+  spec:
+    stages:
+      - stage:
+          name: s12
+          identifier: s12
+          tags: {}
+          template:
+            templateRef: stage05Nov
+            versionLabel: v1.0.0
+            templateInputs:
+              type: Deployment
+              spec:
+                environment:
+                  environmentRef: <+input>
+                  environmentInputs: <+input>
+                  serviceOverrideInputs: <+input>
+                  infrastructureDefinitions: <+input>
+                service:
+                  serviceRef: <+input>
+                  serviceInputs: <+input>
+              variables:
+                - name: var1
+                  type: String
+                  value: <+input>
+                - name: var2
+                  type: String
+                  value: <+input>
