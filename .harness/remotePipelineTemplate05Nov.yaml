@@ -1,0 +1,32 @@
+pipeline:
+  name: remotePipelineTemplate05Nov
+  identifier: remotePipelineTemplate05Nov
+  tags: {}
+  template:
+    templateRef: pipeline05Nov
+    versionLabel: v1.0.0
+    templateInputs:
+      stages:
+        - stage:
+            identifier: s12
+            template:
+              templateInputs:
+                type: Deployment
+                spec:
+                  environment:
+                    environmentRef: <+input>
+                    environmentInputs: <+input>
+                    serviceOverrideInputs: <+input>
+                    infrastructureDefinitions: <+input>
+                  service:
+                    serviceRef: <+input>
+                    serviceInputs: <+input>
+                variables:
+                  - name: var1
+                    type: String
+                    value: <+input>
+                  - name: var2
+                    type: String
+                    value: <+input>
+  projectIdentifier: AmitTest
+  orgIdentifier: Pipelines_NonK8s_Org_NG
