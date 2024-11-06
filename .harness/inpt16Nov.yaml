@@ -1,0 +1,29 @@
+inputSet:
+  name: inpt16Nov
+  identifier: inpt16Nov
+  orgIdentifier: Pipelines_NonK8s_Org_NG
+  projectIdentifier: AmitTest
+  pipeline:
+    identifier: remotePipelineTemplate05Nov
+    template:
+      templateInputs:
+        stages:
+          - stage:
+              identifier: s12
+              template:
+                templateInputs:
+                  type: Deployment
+                  spec:
+                    environment:
+                      environmentRef: E1
+                      infrastructureDefinitions:
+                        - identifier: Infra
+                    service:
+                      serviceRef: svc1
+                  variables:
+                    - name: var1
+                      type: String
+                      value: zvxv
+                    - name: var2
+                      type: String
+                      value: xvxv
