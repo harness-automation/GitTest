@@ -25,7 +25,7 @@ pipeline:
                   - name: var1
                     type: String
                     value: <+input>
-                  - name: var3455
+                  - name: var34555465
                     type: String
                     value: <+input>
                   - name: var2
