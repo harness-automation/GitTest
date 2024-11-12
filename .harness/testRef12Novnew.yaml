@@ -20,3 +20,23 @@ pipeline:
                     templateRef: step2oct17Amit
                     versionLabel: "1"
         tags: {}
+    - stage:
+        name: s234
+        identifier: s234
+        tags: {}
+        template:
+          templateRef: account.stageNov12RemoteTemplate
+          versionLabel: v3
+          templateInputs:
+            type: Custom
+            spec:
+              execution:
+                steps:
+                  - step:
+                      identifier: ShellScript_1
+                      type: ShellScript
+                      spec:
+                        source:
+                          type: Inline
+                          spec:
+                            script: <+input>
