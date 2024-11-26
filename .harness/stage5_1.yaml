@@ -1,0 +1,33 @@
+template:
+  name: stage5
+  identifier: stage5
+  versionLabel: "1"
+  type: Stage
+  projectIdentifier: Test
+  orgIdentifier: default
+  tags: {}
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - step:
+              type: ShellScript
+              name: ShellScript_1
+              identifier: ShellScript_1
+              spec:
+                shell: Bash
+                executionTarget: {}
+                source:
+                  type: Inline
+                  spec:
+                    script: echo <+stage.variables.stage5Var>
+                environmentVariables: []
+                outputVariables: []
+              timeout: 10m
+    variables:
+      - name: stage5Var
+        type: String
+        description: ""
+        required: false
+        value: <+input>.default(NONE).allowedValues(P0,P1,P2,P3,P4,\'P0,P1\',\'P1,P2\',\'P2,P3\',\'P2,P3,P4\',\'P1,P2,P3\',\'P1,P2,P3,P4\',NONE,\'P0,P1,P2,P4\',\'P0,P2,P3,P4\')
