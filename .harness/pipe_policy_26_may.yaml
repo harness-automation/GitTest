@@ -1,0 +1,52 @@
+pipeline:
+  name: pipe policy 26 may
+  identifier: pipe_policy_26_may
+  projectIdentifier: DoNotDelete_AmitSingh
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: s123
+        identifier: s123
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  timeout: 10m
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo 'hi'
+                    environmentVariables: []
+                    outputVariables: []
+        tags: {}
+    - stage:
+        name: st1
+        identifier: st1
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo "123"
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}

@@ -1,0 +1,42 @@
+pipeline:
+  name: testRef12NovNew
+  identifier: testRef12NovNew
+  projectIdentifier: AmitTest
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: s1
+        identifier: s1
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  name: s23
+                  identifier: s23
+                  template:
+                    templateRef: step2oct17Amit
+                    versionLabel: "1"
+        tags: {}
+    - stage:
+        name: s234
+        identifier: s234
+        tags: {}
+        template:
+          templateRef: account.stageNov12RemoteTemplate
+          versionLabel: v3
+          templateInputs:
+            type: Custom
+            spec:
+              execution:
+                steps:
+                  - step:
+                      identifier: ShellScript_1
+                      type: ShellScript
+                      spec:
+                        source:
+                          type: Inline
+                          spec:
+                            script: <+input>

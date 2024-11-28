@@ -1,0 +1,14 @@
+template:
+  name: DefaultStep
+  identifier: DefaultStep
+  versionLabel: "1"
+  type: Step
+  projectIdentifier: TractableTest123
+  orgIdentifier: default
+  tags: {}
+  spec:
+    timeout: 10m
+    type: HelmDeploy
+    spec:
+      skipDryRun: false
+      ignoreReleaseHistFailStatus: false
