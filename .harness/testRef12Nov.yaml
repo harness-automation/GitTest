@@ -1,0 +1,24 @@
+pipeline:
+  name: testRef12Nov
+  identifier: testRef12Nov
+  tags: {}
+  template:
+    templateRef: account.pl_auto_template_b5l6q
+    versionLabel: v3
+    gitBranch: main
+    templateInputs:
+      stages:
+        - stage:
+            identifier: q1
+            type: Approval
+            spec:
+              execution:
+                steps:
+                  - step:
+                      identifier: a1
+                      type: HarnessApproval
+                      spec:
+                        approvers:
+                          userGroups: <+input>
+  projectIdentifier: DoNotDelete_AR7
+  orgIdentifier: Ng_Pipelines_K8s_Organisations

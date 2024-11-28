@@ -1,0 +1,24 @@
+template:
+  name: shellScript19Sept
+  identifier: shellScript19Sept
+  versionLabel: "1"
+  type: Step
+  projectIdentifier: AmitTest
+  orgIdentifier: Pipelines_NonK8s_Org_NG
+  tags: {}
+  spec:
+    timeout: 10m
+    type: ShellScript
+    spec:
+      shell: Bash
+      executionTarget: {}
+      delegateSelectors: []
+      source:
+        type: Inline
+        spec:
+          script: <+input>
+      environmentVariables: []
+      outputVariables:
+        - name: var1
+          type: String
+          value: <+input>
