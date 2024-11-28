@@ -1,0 +1,17 @@
+template:
+  name: stage_non-default
+  identifier: stage_nondefault
+  versionLabel: v1
+  type: Stage
+  tags: {}
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - step:
+              name: ss
+              identifier: ss
+              template:
+                templateRef: account.step_default
+                versionLabel: v1
