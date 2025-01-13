@@ -11,4 +11,12 @@ service:
           description: ""
           required: false
           value: <+input>
+      artifacts:
+        primary:
+          primaryArtifactRef: <+input>
+          sources:
+            - identifier: k9
+              spec:
+                version: <+input>
+              type: CustomArtifact
     type: Kubernetes
