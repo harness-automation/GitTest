@@ -3,3 +3,12 @@ service:
   identifier: testK8
   orgIdentifier: default
   projectIdentifier: ShivamRoleRBAC
+  serviceDefinition:
+    spec:
+      variables:
+        - name: var1
+          type: String
+          description: ""
+          required: false
+          value: <+input>
+    type: Kubernetes
