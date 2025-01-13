@@ -14,6 +14,19 @@ pipeline:
           deploymentType: Kubernetes
           service:
             serviceRef: testK8
+            serviceInputs:
+              serviceDefinition:
+                type: Kubernetes
+                spec:
+                  variables:
+                    - name: var1
+                      type: String
+                      description: ""
+                      value: <+input>
+                  artifacts:
+                    primary:
+                      primaryArtifactRef: <+input>
+                      sources: <+input>
           environment:
             environmentRef: <+input>
             deployToAll: false
