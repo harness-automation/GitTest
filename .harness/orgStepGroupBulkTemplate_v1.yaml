@@ -1,0 +1,85 @@
+template:
+  name: orgStepGroupBulkTemplate
+  identifier: orgStepGroupBulkTemplate
+  versionLabel: v1
+  type: StepGroup
+  orgIdentifier: Pipelines_NonK8s_Org_NG
+  tags: {}
+  spec:
+    stageType: Custom
+    steps:
+      - parallel:
+          - stepGroup:
+              name: sgTemplate
+              identifier: sgTemplate
+              template:
+                templateRef: account.stepGroup1bulkReconcilephase2
+                versionLabel: v1
+                templateInputs:
+                  steps:
+                    - parallel:
+                        - step:
+                            identifier: stepTemplate1
+                            template:
+                              templateInputs:
+                                type: ShellScript
+                                timeout: <+input>
+                                spec:
+                                  source:
+                                    type: Inline
+                                    spec:
+                                      script: <+input>
+                        - step:
+                            identifier: stepTemplate2
+                            template:
+                              templateInputs:
+                                type: Wait
+                                spec:
+                                  duration: <+input>
+                                strategy: <+input>
+                    - stepGroup:
+                        identifier: stepGroup2
+                        steps:
+                          - step:
+                              identifier: StepTemplate3
+                              template:
+                                templateInputs:
+                                  type: ShellScript
+                                  timeout: <+input>
+                                  spec:
+                                    source:
+                                      type: Inline
+                                      spec:
+                                        script: <+input>
+                  variables:
+                    - name: SGVar1
+                      type: String
+                      value: <+input>
+                    - name: SGVar2
+                      type: String
+                      value: <+input>
+          - step:
+              name: stepTemplate1
+              identifier: stepTemplate1
+              template:
+                templateRef: account.stepBulkReconcilephase2
+                versionLabel: v1
+                templateInputs:
+                  type: ShellScript
+                  timeout: <+input>
+                  spec:
+                    source:
+                      type: Inline
+                      spec:
+                        script: <+input>
+      - step:
+          name: stepTemplate3
+          identifier: stepTemplate3
+          template:
+            templateRef: account.step2BulkReconcilephase2
+            versionLabel: v1
+            templateInputs:
+              type: Wait
+              spec:
+                duration: <+input>
+              strategy: <+input>
