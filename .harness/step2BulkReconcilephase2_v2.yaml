@@ -6,6 +6,6 @@ template:
   spec:
     type: Wait
     spec:
-      duration: 11m
+      duration: <+input>
     strategy: <+input>
   versionLabel: v2
