@@ -15,6 +15,7 @@ template:
                 versionLabel: v1
                 templateInputs:
                   type: ShellScript
+                  timeout: <+input>
                   spec:
                     source:
                       type: Inline
@@ -43,6 +44,7 @@ template:
                   versionLabel: v1
                   templateInputs:
                     type: ShellScript
+                    timeout: <+input>
                     spec:
                       source:
                         type: Inline
