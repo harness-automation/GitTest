@@ -18,10 +18,10 @@ template:
                   type: ShellScript
                   timeout: <+input>
                   spec:
-                    source:
-                      type: Inline
-                      spec:
-                        script: <+input>
+                    environmentVariables:
+                      - name: inp1
+                        type: String
+                        value: <+input>
           - step:
               name: stepTemplate2
               identifier: stepTemplate2
@@ -47,10 +47,10 @@ template:
                     type: ShellScript
                     timeout: <+input>
                     spec:
-                      source:
-                        type: Inline
-                        spec:
-                          script: <+input>
+                      environmentVariables:
+                        - name: inp1
+                          type: String
+                          value: <+input>
     variables:
       - name: SGVar1
         type: String
