@@ -18,5 +18,5 @@ template:
       environmentVariables:
         - name: inp1
           type: String
-          value: testVal
+          value: <+input>
       outputVariables: []
