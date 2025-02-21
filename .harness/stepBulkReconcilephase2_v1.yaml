@@ -14,7 +14,7 @@ template:
       source:
         type: Inline
         spec:
-          script: <+input>
+          script: echo 'update'
       environmentVariables:
         - name: inp1
           type: String
