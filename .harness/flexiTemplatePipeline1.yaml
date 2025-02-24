@@ -234,13 +234,11 @@ pipeline:
                       type: Deployment
                       spec:
                         environment:
-                          environmentRef: <+input>
-                          environmentInputs: <+input>
-                          serviceOverrideInputs: <+input>
-                          infrastructureDefinitions: <+input>
+                          environmentRef: E1
+                          infrastructureDefinitions:
+                            - identifier: Infra
                         service:
-                          serviceRef: <+input>
-                          serviceInputs: <+input>
+                          serviceRef: svc1
                         execution:
                           steps:
                             - step:
