@@ -227,3 +227,7 @@ template:
                         - insert:
                             identifier: insert4
                             steps: <+input>
+      - insert:
+          name: insert3
+          identifier: insert3
+          stages: <+input>
