@@ -231,3 +231,4 @@ template:
           name: insert3
           identifier: insert3
           stages: <+input>
+    allowStageExecutions: true
