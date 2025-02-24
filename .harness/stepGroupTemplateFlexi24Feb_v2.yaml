@@ -23,9 +23,6 @@ template:
                   - name: inp1
                     type: String
                     value: test
-                  - name: inp2
-                    type: String
-                    value: tesrt1
     variables:
       - name: var2
         type: String
