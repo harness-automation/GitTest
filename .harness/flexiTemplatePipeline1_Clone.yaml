@@ -229,7 +229,7 @@ pipeline:
                   spec:
                     deploymentType: Kubernetes
                     service:
-                      serviceRef: svc1
+                      serviceRef: test24FebService
                     environment:
                       environmentRef: E1
                       deployToAll: false
