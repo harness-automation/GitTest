@@ -222,52 +222,62 @@ pipeline:
             identifier: insert3
             stages:
               - stage:
-                  name: s2
-                  identifier: s2
-                  tags: {}
-                  template:
-                    templateRef: FlexiTemplate24FebStage
-                    versionLabel: v1
-                    templateInputs:
-                      type: Deployment
-                      spec:
-                        environment:
-                          environmentRef: E1
-                          infrastructureDefinitions:
-                            - identifier: Infra
-                        service:
-                          serviceRef: svc1
-                        execution:
-                          steps:
-                            - step:
-                                identifier: ShellScript_1
-                                type: ShellScript
+                  name: s1
+                  identifier: s1
+                  description: ""
+                  type: Deployment
+                  spec:
+                    deploymentType: Kubernetes
+                    service:
+                      serviceRef: svc1
+                    environment:
+                      environmentRef: E1
+                      deployToAll: false
+                      infrastructureDefinitions:
+                        - identifier: Infra
+                    execution:
+                      steps:
+                        - step:
+                            type: ShellScript
+                            name: ShellScript_1
+                            identifier: ShellScript_1
+                            spec:
+                              shell: Bash
+                              executionTarget: {}
+                              source:
+                                type: Inline
                                 spec:
-                                  source:
-                                    type: Inline
-                                    spec:
-                                      script: <+input>
-                          rollbackSteps:
-                            - insert:
-                                identifier: insert1
-                                steps:
-                                  - step:
-                                      name: step1
-                                      identifier: step1
-                                      template:
-                                        templateRef: account.StepFlexiTemplate24Feb
-                                        versionLabel: v1
-                                        templateInputs:
-                                          type: ShellScript
-                                          spec:
-                                            source:
-                                              type: Inline
-                                              spec:
-                                                script: <+input>
-                                            environmentVariables:
-                                              - name: inp1
-                                                type: String
-                                                value: <+input>
+                                  script: echo 'hi'
+                              environmentVariables: []
+                              outputVariables: []
+                            timeout: 10m
+                      rollbackSteps:
+                        - step:
+                            type: ShellScript
+                            name: ShellScript_1
+                            identifier: ShellScript_1
+                            spec:
+                              shell: Bash
+                              executionTarget: {}
+                              source:
+                                type: Inline
+                                spec:
+                                  script: <+input>
+                              environmentVariables: []
+                              outputVariables: []
+                            timeout: 10m
+                  tags: {}
+                  failureStrategies:
+                    - onFailure:
+                        errors:
+                          - AllErrors
+                        action:
+                          type: ManualIntervention
+                          spec:
+                            timeout: 10m
+                            onTimeout:
+                              action:
+                                type: StageRollback
   projectIdentifier: AmitTest
   orgIdentifier: Pipelines_NonK8s_Org_NG
   identifier: flexiTemplatePipeline1_Clone
