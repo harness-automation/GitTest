@@ -228,11 +228,11 @@ pipeline:
             identifier: insert3
             stages:
               - stage:
-                  name: stage3
-                  identifier: stage3
+                  name: s2
+                  identifier: s2
                   tags: {}
                   template:
-                    templateRef: account.stageFlexiTemplate24Feb
+                    templateRef: FlexiTemplate24FebStage
                     versionLabel: v1
                     templateInputs:
                       type: Deployment
@@ -247,103 +247,17 @@ pipeline:
                           serviceInputs: <+input>
                         execution:
                           steps:
-                            - parallel:
-                                - stepGroup:
-                                    identifier: testGroup1
-                                    template:
-                                      templateInputs:
-                                        steps:
-                                          - step:
-                                              identifier: stepTemplate1
-                                              template:
-                                                templateInputs:
-                                                  type: ShellScript
-                                                  spec:
-                                                    source:
-                                                      type: Inline
-                                                      spec:
-                                                        script: <+input>
-                                                    environmentVariables:
-                                                      - name: inp1
-                                                        type: String
-                                                        value: <+input>
-                                          - stepGroup:
-                                              identifier: stepGroup1
-                                              steps:
-                                                - step:
-                                                    identifier: stepTemplate4
-                                                    template:
-                                                      templateInputs:
-                                                        type: ShellScript
-                                                        spec:
-                                                          source:
-                                                            type: Inline
-                                                            spec:
-                                                              script: <+input>
-                                                          environmentVariables:
-                                                            - name: inp1
-                                                              type: String
-                                                              value: <+input>
-                                              variables:
-                                                - name: var3
-                                                  type: String
-                                                  value: <+input>
-                                                - name: var4
-                                                  type: String
-                                                  value: <+input>
-                                        variables:
-                                          - name: var1
-                                            type: String
-                                            value: <+input>
-                                          - name: var2
-                                            type: String
-                                            value: <+input>
-                                - insert:
-                                    identifier: insert1
-                                    steps: <+input>
                             - step:
-                                identifier: step123
-                                template:
-                                  templateInputs:
-                                    type: ShellScript
+                                identifier: ShellScript_1
+                                type: ShellScript
+                                spec:
+                                  source:
+                                    type: Inline
                                     spec:
-                                      source:
-                                        type: Inline
-                                        spec:
-                                          script: <+input>
-                                      environmentVariables:
-                                        - name: inp1
-                                          type: String
-                                          value: <+input>
-                            - insert:
-                                identifier: insert2
-                                steps: <+input>
+                                      script: <+input>
                           rollbackSteps:
-                            - parallel:
-                                - stepGroup:
-                                    identifier: rollbackCheck1
-                                    template:
-                                      templateInputs:
-                                        steps:
-                                          - step:
-                                              identifier: step3
-                                              template:
-                                                templateInputs:
-                                                  type: ShellScript
-                                                  spec:
-                                                    source:
-                                                      type: Inline
-                                                      spec:
-                                                        script: <+input>
-                                        variables:
-                                          - name: var2
-                                            type: String
-                                            value: <+input>
-                                - insert:
-                                    identifier: insert3
-                                    steps: <+input>
                             - insert:
-                                identifier: insert4
+                                identifier: insert1
                                 steps: <+input>
   projectIdentifier: AmitTest
   orgIdentifier: Pipelines_NonK8s_Org_NG
