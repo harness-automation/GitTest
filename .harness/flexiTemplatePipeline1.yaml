@@ -197,7 +197,7 @@ pipeline:
                                     templateInputs:
                                       steps:
                                         - step:
-                                            identifier: stepTemplate1
+                                            identifier: step3
                                             template:
                                               templateInputs:
                                                 type: ShellScript
@@ -206,44 +206,7 @@ pipeline:
                                                     type: Inline
                                                     spec:
                                                       script: <+input>
-                                                  environmentVariables:
-                                                    - name: inp1
-                                                      type: String
-                                                      value: <+input>
-                                                    - name: inp2
-                                                      type: String
-                                                      value: <+input>
-                                        - stepGroup:
-                                            identifier: stepGroup1
-                                            steps:
-                                              - step:
-                                                  identifier: stepTemplate4
-                                                  template:
-                                                    templateInputs:
-                                                      type: ShellScript
-                                                      spec:
-                                                        source:
-                                                          type: Inline
-                                                          spec:
-                                                            script: <+input>
-                                                        environmentVariables:
-                                                          - name: inp1
-                                                            type: String
-                                                            value: <+input>
-                                                          - name: inp2
-                                                            type: String
-                                                            value: <+input>
-                                            variables:
-                                              - name: var3
-                                                type: String
-                                                value: <+input>
-                                              - name: var4
-                                                type: String
-                                                value: <+input>
                                       variables:
-                                        - name: var1
-                                          type: String
-                                          value: <+input>
                                         - name: var2
                                           type: String
                                           value: <+input>
