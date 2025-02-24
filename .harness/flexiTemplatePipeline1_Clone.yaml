@@ -222,13 +222,12 @@ pipeline:
             identifier: insert3
             stages:
               - stage:
-                  name: s1
-                  identifier: s1
+                  name: stage3
+                  identifier: stage3
                   tags: {}
                   template:
                     templateRef: felxiStagetemplate_2_24Feb
                     versionLabel: v1
-                    gitBranch: main
                     templateInputs:
                       type: Deployment
                       spec:
