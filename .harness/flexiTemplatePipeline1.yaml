@@ -13,13 +13,11 @@ pipeline:
                 type: Deployment
                 spec:
                   environment:
-                    environmentRef: <+input>
-                    environmentInputs: <+input>
-                    serviceOverrideInputs: <+input>
-                    infrastructureDefinitions: <+input>
+                    environmentRef: E1
+                    infrastructureDefinitions:
+                      - identifier: Infra
                   service:
-                    serviceRef: <+input>
-                    serviceInputs: <+input>
+                    serviceRef: svc1
                   execution:
                     steps:
                       - parallel:
@@ -75,13 +73,11 @@ pipeline:
                     type: Deployment
                     spec:
                       environment:
-                        environmentRef: <+input>
-                        environmentInputs: <+input>
-                        serviceOverrideInputs: <+input>
-                        infrastructureDefinitions: <+input>
+                        environmentRef: E1
+                        infrastructureDefinitions:
+                          - identifier: Infra
                       service:
-                        serviceRef: <+input>
-                        serviceInputs: <+input>
+                        serviceRef: svc1
                       execution:
                         steps:
                           - parallel:
@@ -103,7 +99,7 @@ pipeline:
                                                   environmentVariables:
                                                     - name: inp1
                                                       type: String
-                                                      value: <+input>
+                                                      value: test1
                                         - stepGroup:
                                             identifier: stepGroup1
                                             steps:
@@ -120,21 +116,21 @@ pipeline:
                                                         environmentVariables:
                                                           - name: inp1
                                                             type: String
-                                                            value: <+input>
+                                                            value: test3
                                             variables:
                                               - name: var3
                                                 type: String
-                                                value: <+input>
+                                                value: test1
                                               - name: var4
                                                 type: String
-                                                value: <+input>
+                                                value: test2
                                       variables:
                                         - name: var1
                                           type: String
-                                          value: <+input>
+                                          value: test
                                         - name: var2
                                           type: String
-                                          value: <+input>
+                                          value: test1
                               - insert:
                                   identifier: insert1
                                   steps:
@@ -165,7 +161,7 @@ pipeline:
                                     environmentVariables:
                                       - name: inp1
                                         type: String
-                                        value: <+input>
+                                        value: test4
                           - insert:
                               identifier: insert2
                               steps:
@@ -203,7 +199,7 @@ pipeline:
                                       variables:
                                         - name: var2
                                           type: String
-                                          value: <+input>
+                                          value: test5
                               - insert:
                                   identifier: insert3
                                   steps: <+input>
