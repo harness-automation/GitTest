@@ -185,7 +185,7 @@ pipeline:
                                       source:
                                         type: Inline
                                         spec:
-                                          script: exit 1
+                                          script: <+input>
                                       environmentVariables: []
                                       outputVariables: []
                                     timeout: 10m
