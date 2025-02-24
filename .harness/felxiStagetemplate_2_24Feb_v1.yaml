@@ -45,6 +45,10 @@ template:
                 environmentVariables: []
                 outputVariables: []
               timeout: 10m
+          - insert:
+              name: rollbackInsert
+              identifier: rollbackInsert
+              steps: <+input>
     failureStrategies:
       - onFailure:
           errors:
