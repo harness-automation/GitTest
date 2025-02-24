@@ -27,19 +27,25 @@ pipeline:
                               identifier: insert1
                               steps:
                                 - step:
-                                    type: ShellScript
-                                    name: ShellScript_2
-                                    identifier: ShellScript_2
-                                    spec:
-                                      shell: Bash
-                                      executionTarget: {}
-                                      source:
-                                        type: Inline
+                                    name: stepTemplate
+                                    identifier: stepTemplate
+                                    template:
+                                      templateRef: account.StepFlexiTemplate24Feb
+                                      versionLabel: v1
+                                      templateInputs:
+                                        type: ShellScript
                                         spec:
-                                          script: exit 0
-                                      environmentVariables: []
-                                      outputVariables: []
-                                    timeout: 10m
+                                          source:
+                                            type: Inline
+                                            spec:
+                                              script: <+input>
+                                          environmentVariables:
+                                            - name: inp1
+                                              type: String
+                                              value: <+input>
+                                            - name: inp2
+                                              type: String
+                                              value: <+input>
                           - step:
                               identifier: ShellScript_1
                               type: ShellScript
