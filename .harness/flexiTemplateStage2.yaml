@@ -45,9 +45,6 @@ pipeline:
                                             - name: inp1
                                               type: String
                                               value: <+input>
-                                            - name: inp2
-                                              type: String
-                                              value: <+input>
                                 - stepGroup:
                                     identifier: stepGroup1
                                     steps:
@@ -63,9 +60,6 @@ pipeline:
                                                     script: <+input>
                                                 environmentVariables:
                                                   - name: inp1
-                                                    type: String
-                                                    value: <+input>
-                                                  - name: inp2
                                                     type: String
                                                     value: <+input>
                                     variables:
@@ -97,9 +91,6 @@ pipeline:
                                 script: <+input>
                             environmentVariables:
                               - name: inp1
-                                type: String
-                                value: <+input>
-                              - name: inp2
                                 type: String
                                 value: <+input>
                   - insert:
@@ -162,9 +153,6 @@ pipeline:
                                     - name: inp1
                                       type: String
                                       value: <+input>
-                                    - name: inp2
-                                      type: String
-                                      value: <+input>
                         - stepGroup:
                             identifier: stepGroup1
                             steps:
@@ -180,9 +168,6 @@ pipeline:
                                             script: <+input>
                                         environmentVariables:
                                           - name: inp1
-                                            type: String
-                                            value: <+input>
-                                          - name: inp2
                                             type: String
                                             value: <+input>
                             variables:
