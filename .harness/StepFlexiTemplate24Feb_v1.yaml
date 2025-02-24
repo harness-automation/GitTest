@@ -1,0 +1,25 @@
+template:
+  name: StepFlexiTemplate24Feb
+  identifier: StepFlexiTemplate24Feb
+  versionLabel: v1
+  type: Step
+  tags: {}
+  spec:
+    timeout: 10m
+    type: ShellScript
+    spec:
+      shell: Bash
+      executionTarget: {}
+      delegateSelectors: []
+      source:
+        type: Inline
+        spec:
+          script: <+input>
+      environmentVariables:
+        - name: inp1
+          type: String
+          value: <+input>
+        - name: inp2
+          type: String
+          value: <+input>
+      outputVariables: []
