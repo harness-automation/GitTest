@@ -1,0 +1,64 @@
+template:
+  name: PipelineTemplateFlexi24Feb
+  identifier: PipelineTemplateFlexi24Feb
+  versionLabel: v1
+  type: Pipeline
+  projectIdentifier: AmitTest
+  orgIdentifier: Pipelines_NonK8s_Org_NG
+  tags: {}
+  spec:
+    stages:
+      - stage:
+          name: stage1
+          identifier: stage1
+          description: ""
+          type: Deployment
+          spec:
+            deploymentType: Kubernetes
+            environment:
+              environmentRef: <+input>
+              deployToAll: false
+              environmentInputs: <+input>
+              serviceOverrideInputs: <+input>
+              infrastructureDefinitions: <+input>
+            service:
+              serviceRef: <+input>
+              serviceInputs: <+input>
+            execution:
+              steps:
+                - parallel:
+                    - insert:
+                        name: insert1
+                        identifier: insert1
+                        steps: <+input>
+                    - step:
+                        type: ShellScript
+                        name: ShellScript_1
+                        identifier: ShellScript_1
+                        spec:
+                          shell: Bash
+                          executionTarget: {}
+                          source:
+                            type: Inline
+                            spec:
+                              script: <+input>
+                          environmentVariables: []
+                          outputVariables: []
+                        timeout: 10m
+                - insert:
+                    name: insert2
+                    identifier: insert2
+                    steps: <+input>
+              rollbackSteps: []
+          tags: {}
+          failureStrategies:
+            - onFailure:
+                errors:
+                  - AllErrors
+                action:
+                  type: ManualIntervention
+                  spec:
+                    timeout: 10m
+                    onTimeout:
+                      action:
+                        type: PipelineRollback
