@@ -252,7 +252,21 @@ pipeline:
                                   steps: <+input>
                           - insert:
                               identifier: insert4
-                              steps: <+input>
+                              steps:
+                                - step:
+                                    type: ShellScript
+                                    name: ShellScript_1
+                                    identifier: ShellScript_1
+                                    spec:
+                                      shell: Bash
+                                      executionTarget: {}
+                                      source:
+                                        type: Inline
+                                        spec:
+                                          script: echo 'rollback'
+                                      environmentVariables: []
+                                      outputVariables: []
+                                    timeout: 10m
         - insert:
             identifier: insert3
             stages: <+input>
