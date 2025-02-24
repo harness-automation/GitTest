@@ -19,7 +19,4 @@ template:
         - name: inp1
           type: String
           value: <+input>
-        - name: inp2
-          type: String
-          value: <+input>
       outputVariables: []
