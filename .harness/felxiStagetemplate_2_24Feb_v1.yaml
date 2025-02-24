@@ -1,0 +1,60 @@
+template:
+  name: felxiStagetemplate_2_24Feb
+  type: Stage
+  projectIdentifier: AmitTest
+  orgIdentifier: Pipelines_NonK8s_Org_NG
+  spec:
+    type: Deployment
+    spec:
+      deploymentType: Kubernetes
+      service:
+        serviceRef: test24FebService
+      environment:
+        environmentRef: E1
+        deployToAll: false
+        infrastructureDefinitions:
+          - identifier: Infra
+      execution:
+        steps:
+          - step:
+              type: ShellScript
+              name: ShellScript_1
+              identifier: ShellScript_1
+              spec:
+                shell: Bash
+                executionTarget: {}
+                source:
+                  type: Inline
+                  spec:
+                    script: echo 'hi'
+                environmentVariables: []
+                outputVariables: []
+              timeout: 10m
+        rollbackSteps:
+          - step:
+              type: ShellScript
+              name: ShellScript_1
+              identifier: ShellScript_1
+              spec:
+                shell: Bash
+                executionTarget: {}
+                source:
+                  type: Inline
+                  spec:
+                    script: <+input>
+                environmentVariables: []
+                outputVariables: []
+              timeout: 10m
+    failureStrategies:
+      - onFailure:
+          errors:
+            - AllErrors
+          action:
+            type: ManualIntervention
+            spec:
+              timeout: 10m
+              onTimeout:
+                action:
+                  type: StageRollback
+  identifier: felxiStagetemplate_2_24Feb
+  versionLabel: v1
