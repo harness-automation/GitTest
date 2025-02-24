@@ -1,0 +1,79 @@
+template:
+  name: stepGroupTemplateFlexi24Feb
+  identifier: stepGroupTemplateFlexi24Feb
+  versionLabel: v1
+  type: StepGroup
+  tags: {}
+  spec:
+    stageType: Deployment
+    steps:
+      - step:
+          name: stepTemplate1
+          identifier: stepTemplate1
+          template:
+            templateRef: account.StepFlexiTemplate24Feb
+            versionLabel: v1
+            templateInputs:
+              type: ShellScript
+              spec:
+                source:
+                  type: Inline
+                  spec:
+                    script: <+input>
+                environmentVariables:
+                  - name: inp1
+                    type: String
+                    value: <+input>
+                  - name: inp2
+                    type: String
+                    value: <+input>
+      - stepGroup:
+          name: stepGroup1
+          identifier: stepGroup1
+          steps:
+            - step:
+                name: stepTemplate4
+                identifier: stepTemplate4
+                template:
+                  templateRef: account.StepFlexiTemplate24Feb
+                  versionLabel: v1
+                  templateInputs:
+                    type: ShellScript
+                    spec:
+                      source:
+                        type: Inline
+                        spec:
+                          script: <+input>
+                      environmentVariables:
+                        - name: inp1
+                          type: String
+                          value: <+input>
+                        - name: inp2
+                          type: String
+                          value: <+input>
+          variables:
+            - name: var3
+              type: String
+              value: <+input>
+              description: ""
+              required: false
+            - name: var4
+              type: String
+              value: <+input>
+              description: ""
+              required: false
+    stepGroupInfra:
+      type: KubernetesDirect
+      spec:
+        connectorRef: account.KubernetesConnectorForAutomationTest
+    variables:
+      - name: var1
+        type: String
+        value: <+input>
+        description: ""
+        required: false
+      - name: var2
+        type: String
+        value: <+input>
+        description: ""
+        required: false
