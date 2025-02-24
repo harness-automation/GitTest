@@ -242,6 +242,9 @@ pipeline:
                                     type: Inline
                                     spec:
                                       script: <+input>
+                            - insert:
+                                identifier: rollbackInsert
+                                steps: <+input>
   projectIdentifier: AmitTest
   orgIdentifier: Pipelines_NonK8s_Org_NG
   identifier: flexiTemplatePipeline1_Clone
