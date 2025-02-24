@@ -269,6 +269,29 @@ pipeline:
                                     timeout: 10m
         - insert:
             identifier: insert3
-            stages: <+input>
+            stages:
+              - stage:
+                  name: insertStage
+                  identifier: insertStage
+                  description: ""
+                  type: Custom
+                  spec:
+                    execution:
+                      steps:
+                        - step:
+                            type: ShellScript
+                            name: ShellScript_1
+                            identifier: ShellScript_1
+                            spec:
+                              shell: Bash
+                              executionTarget: {}
+                              source:
+                                type: Inline
+                                spec:
+                                  script: <+input>
+                              environmentVariables: []
+                              outputVariables: []
+                            timeout: 10m
+                  tags: {}
   projectIdentifier: AmitTest
   orgIdentifier: Pipelines_NonK8s_Org_NG
