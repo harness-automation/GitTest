@@ -24,9 +24,6 @@ template:
                   - name: inp1
                     type: String
                     value: <+input>
-                  - name: inp2
-                    type: String
-                    value: <+input>
       - stepGroup:
           name: stepGroup1
           identifier: stepGroup1
@@ -46,9 +43,6 @@ template:
                           script: <+input>
                       environmentVariables:
                         - name: inp1
-                          type: String
-                          value: <+input>
-                        - name: inp2
                           type: String
                           value: <+input>
           variables:
