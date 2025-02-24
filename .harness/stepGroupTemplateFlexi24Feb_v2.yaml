@@ -26,10 +26,6 @@ template:
                   - name: inp2
                     type: String
                     value: tesrt1
-    stepGroupInfra:
-      type: KubernetesDirect
-      spec:
-        connectorRef: account.KubernetesConnectorForAutomationTest
     variables:
       - name: var2
         type: String
