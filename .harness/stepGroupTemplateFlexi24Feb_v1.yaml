@@ -62,10 +62,6 @@ template:
               value: <+input>
               description: ""
               required: false
-    stepGroupInfra:
-      type: KubernetesDirect
-      spec:
-        connectorRef: account.KubernetesConnectorForAutomationTest
     variables:
       - name: var1
         type: String
