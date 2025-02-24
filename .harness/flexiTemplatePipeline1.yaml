@@ -25,7 +25,21 @@ pipeline:
                       - parallel:
                           - insert:
                               identifier: insert1
-                              steps: <+input>
+                              steps:
+                                - step:
+                                    type: ShellScript
+                                    name: ShellScript_2
+                                    identifier: ShellScript_2
+                                    spec:
+                                      shell: Bash
+                                      executionTarget: {}
+                                      source:
+                                        type: Inline
+                                        spec:
+                                          script: exit 0
+                                      environmentVariables: []
+                                      outputVariables: []
+                                    timeout: 10m
                           - step:
                               identifier: ShellScript_1
                               type: ShellScript
@@ -36,7 +50,21 @@ pipeline:
                                     script: <+input>
                       - insert:
                           identifier: insert2
-                          steps: <+input>
+                          steps:
+                            - step:
+                                type: ShellScript
+                                name: ShellScript_3
+                                identifier: ShellScript_3
+                                spec:
+                                  shell: Bash
+                                  executionTarget: {}
+                                  source:
+                                    type: Inline
+                                    spec:
+                                      script: exit 1
+                                  environmentVariables: []
+                                  outputVariables: []
+                                timeout: 10m
             - stage:
                 identifier: stage2
                 template:
@@ -112,7 +140,21 @@ pipeline:
                                           value: <+input>
                               - insert:
                                   identifier: insert1
-                                  steps: <+input>
+                                  steps:
+                                    - step:
+                                        type: ShellScript
+                                        name: insertShellScript
+                                        identifier: insertShellScript
+                                        spec:
+                                          shell: Bash
+                                          executionTarget: {}
+                                          source:
+                                            type: Inline
+                                            spec:
+                                              script: <+input>
+                                          environmentVariables: []
+                                          outputVariables: []
+                                        timeout: 10m
                           - step:
                               identifier: step123
                               template:
@@ -132,7 +174,21 @@ pipeline:
                                         value: <+input>
                           - insert:
                               identifier: insert2
-                              steps: <+input>
+                              steps:
+                                - step:
+                                    type: ShellScript
+                                    name: Insert2ShellScript
+                                    identifier: Insert2ShellScript
+                                    spec:
+                                      shell: Bash
+                                      executionTarget: {}
+                                      source:
+                                        type: Inline
+                                        spec:
+                                          script: exit 1
+                                      environmentVariables: []
+                                      outputVariables: []
+                                    timeout: 10m
                         rollbackSteps:
                           - parallel:
                               - stepGroup:
