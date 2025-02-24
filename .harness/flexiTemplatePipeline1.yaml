@@ -258,6 +258,23 @@ pipeline:
                           rollbackSteps:
                             - insert:
                                 identifier: insert1
-                                steps: <+input>
+                                steps:
+                                  - step:
+                                      name: step1
+                                      identifier: step1
+                                      template:
+                                        templateRef: account.StepFlexiTemplate24Feb
+                                        versionLabel: v1
+                                        templateInputs:
+                                          type: ShellScript
+                                          spec:
+                                            source:
+                                              type: Inline
+                                              spec:
+                                                script: <+input>
+                                            environmentVariables:
+                                              - name: inp1
+                                                type: String
+                                                value: <+input>
   projectIdentifier: AmitTest
   orgIdentifier: Pipelines_NonK8s_Org_NG
