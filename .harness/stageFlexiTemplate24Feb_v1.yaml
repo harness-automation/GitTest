@@ -141,3 +141,9 @@ template:
               onTimeout:
                 action:
                   type: PipelineRollback
+    variables:
+      - name: var1
+        type: String
+        description: ""
+        required: false
+        value: <+input>
