@@ -181,6 +181,10 @@ template:
                         - insert:
                             identifier: insert4
                             steps: <+input>
+                  variables:
+                    - name: var1
+                      type: String
+                      value: <+input>
       - insert:
           name: insert3
           identifier: insert3
