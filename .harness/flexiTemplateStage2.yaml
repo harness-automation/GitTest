@@ -123,6 +123,10 @@ pipeline:
                   - insert:
                       identifier: insert4
                       steps: <+input>
+            variables:
+              - name: var1
+                type: String
+                value: <+input>
     - stage:
         name: s2
         identifier: s2
