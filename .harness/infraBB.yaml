@@ -1,0 +1,13 @@
+infrastructureDefinition:
+  name: infraBB
+  identifier: infraBB
+  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  projectIdentifier: DoNotDelete_Brooke2
+  environmentRef: envBB1
+  deploymentType: Kubernetes
+  type: KubernetesDirect
+  spec:
+    connectorRef: account.KubernetesConnectorForAutomationTest
+    namespace: <+input>
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
+  allowSimultaneousDeployments: false
