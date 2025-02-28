@@ -1,0 +1,13 @@
+infrastructureDefinition:
+  name: infraRemoteBugbash
+  identifier: infraRemoteBugbash
+  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  projectIdentifier: DoNotDelete_Brooke2
+  environmentRef: envBugBashRemote
+  deploymentType: Kubernetes
+  type: KubernetesDirect
+  spec:
+    connectorRef: account.KubernetesConnectorForAutomationTest
+    namespace: default
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
+  allowSimultaneousDeployments: false
