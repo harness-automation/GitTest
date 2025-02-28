@@ -1,0 +1,5 @@
+service:
+  name: service2BB
+  identifier: service2BB
+  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  projectIdentifier: DoNotDelete_Brooke2
