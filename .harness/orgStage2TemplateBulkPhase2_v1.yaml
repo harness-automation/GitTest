@@ -147,6 +147,6 @@ template:
                     source:
                       type: Inline
                       spec:
-                        script: <+input>
+                        script: echo "test"
   identifier: orgStage2TemplateBulkPhase2
   versionLabel: v1
