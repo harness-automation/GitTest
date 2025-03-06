@@ -25,10 +25,10 @@ template:
                                 type: ShellScript
                                 timeout: <+input>
                                 spec:
-                                  source:
-                                    type: Inline
-                                    spec:
-                                      script: <+input>
+                                  environmentVariables:
+                                    - name: inp1
+                                      type: String
+                                      value: <+input>
                         - step:
                             identifier: stepTemplate2
                             template:
@@ -37,6 +37,7 @@ template:
                                 spec:
                                   duration: <+input>
                                 strategy: <+input>
+                                failureStrategies: <+input>
                     - stepGroup:
                         identifier: stepGroup2
                         steps:
@@ -47,10 +48,10 @@ template:
                                   type: ShellScript
                                   timeout: <+input>
                                   spec:
-                                    source:
-                                      type: Inline
-                                      spec:
-                                        script: <+input>
+                                    environmentVariables:
+                                      - name: inp1
+                                        type: String
+                                        value: <+input>
                   variables:
                     - name: SGVar1
                       type: String
@@ -68,10 +69,10 @@ template:
                   type: ShellScript
                   timeout: <+input>
                   spec:
-                    source:
-                      type: Inline
-                      spec:
-                        script: <+input>
+                    environmentVariables:
+                      - name: inp1
+                        type: String
+                        value: <+input>
       - step:
           name: stepTemplate3
           identifier: stepTemplate3
@@ -83,3 +84,4 @@ template:
               spec:
                 duration: <+input>
               strategy: <+input>
+              failureStrategies: <+input>
