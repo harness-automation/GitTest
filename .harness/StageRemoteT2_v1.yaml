@@ -15,3 +15,6 @@ template:
               template:
                 templateRef: account.StepRemoteTemplateT1
                 versionLabel: v1
+                templateInputs:
+                  type: ShellScript
+                  timeout: <+input>
