@@ -33,6 +33,7 @@ template:
                   spec:
                     duration: <+input>
                   strategy: <+input>
+                  failureStrategies: <+input>
       - stepGroup:
           name: stepGroup2
           identifier: stepGroup2
