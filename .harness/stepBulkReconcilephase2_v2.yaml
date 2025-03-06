@@ -18,5 +18,5 @@ template:
           type: String
           value: testVal
       outputVariables: []
-    timeout: 30m
+    timeout: <+input>
   versionLabel: v2
