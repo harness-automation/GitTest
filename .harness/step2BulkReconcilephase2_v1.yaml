@@ -9,3 +9,4 @@ template:
     spec:
       duration: <+input>
     strategy: <+input>
+    failureStrategies: <+input>
