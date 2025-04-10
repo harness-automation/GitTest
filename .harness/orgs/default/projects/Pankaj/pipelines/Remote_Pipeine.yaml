@@ -29,20 +29,6 @@ pipeline:
                   timeout: <+input>
               - step:
                   type: ShellScript
-                  name: ShellScript_5
-                  identifier: ShellScript_5
-                  spec:
-                    shell: Bash
-                    executionTarget: {}
-                    source:
-                      type: Inline
-                      spec:
-                        script: echo Hello World 4
-                    environmentVariables: []
-                    outputVariables: []
-                  timeout: <+input>
-              - step:
-                  type: ShellScript
                   name: ShellScript_6
                   identifier: ShellScript_6
                   spec:
