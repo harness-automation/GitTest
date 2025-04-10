@@ -55,4 +55,18 @@ pipeline:
                     environmentVariables: []
                     outputVariables: []
                   timeout: <+input>
+              - step:
+                  type: ShellScript
+                  name: ShellScript_4
+                  identifier: ShellScript_4
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo Hello World 4
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: <+input>
         tags: {}
