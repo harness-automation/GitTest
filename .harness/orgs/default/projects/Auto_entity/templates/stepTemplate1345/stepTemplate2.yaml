@@ -1,0 +1,21 @@
+template:
+  name: stepTemplate2
+  identifier: stepTemplate1345
+  type: Step
+  projectIdentifier: Auto_entity
+  orgIdentifier: default
+  tags: {}
+  spec:
+    timeout: 10m
+    type: ShellScript
+    spec:
+      shell: Bash
+      executionTarget: {}
+      delegateSelectors: []
+      source:
+        type: Inline
+        spec:
+          script: echo 'template hi v2'
+      environmentVariables: []
+      outputVariables: []
+  versionLabel: v2

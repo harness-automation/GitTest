@@ -1,0 +1,413 @@
+template:
+  name: projectPipelineTemplateBulkPhase2
+  identifier: projectPipelineTemplateBulkPhase2
+  versionLabel: v1
+  type: Pipeline
+  projectIdentifier: AmitTest
+  orgIdentifier: Pipelines_NonK8s_Org_NG
+  tags: {}
+  spec:
+    stages:
+      - parallel:
+          - stage:
+              name: s1
+              identifier: s1
+              tags: {}
+              template:
+                templateRef: org.orgStageLevelTemplateBulkPhase2
+                versionLabel: v1
+                templateInputs:
+                  type: Custom
+                  spec:
+                    execution:
+                      steps:
+                        - parallel:
+                            - stepGroup:
+                                identifier: sg1
+                                template:
+                                  templateInputs:
+                                    steps:
+                                      - parallel:
+                                          - stepGroup:
+                                              identifier: sgTemplate
+                                              template:
+                                                templateInputs:
+                                                  steps:
+                                                    - parallel:
+                                                        - step:
+                                                            identifier: stepTemplate1
+                                                            template:
+                                                              templateInputs:
+                                                                type: ShellScript
+                                                                spec:
+                                                                  source:
+                                                                    type: Inline
+                                                                    spec:
+                                                                      script: <+input>
+                                                        - step:
+                                                            identifier: stepTemplate2
+                                                            template:
+                                                              templateInputs:
+                                                                type: Wait
+                                                                spec:
+                                                                  duration: <+input>
+                                                                strategy: <+input>
+                                                    - stepGroup:
+                                                        identifier: stepGroup2
+                                                        steps:
+                                                          - step:
+                                                              identifier: StepTemplate3
+                                                              template:
+                                                                templateInputs:
+                                                                  type: ShellScript
+                                                                  spec:
+                                                                    source:
+                                                                      type: Inline
+                                                                      spec:
+                                                                        script: <+input>
+                                                  variables:
+                                                    - name: SGVar1
+                                                      type: String
+                                                      value: <+input>
+                                                    - name: SGVar2
+                                                      type: String
+                                                      value: <+input>
+                                          - step:
+                                              identifier: stepTemplate1
+                                              template:
+                                                templateInputs:
+                                                  type: ShellScript
+                                                  spec:
+                                                    source:
+                                                      type: Inline
+                                                      spec:
+                                                        script: <+input>
+                                      - step:
+                                          identifier: stepTemplate3
+                                          template:
+                                            templateInputs:
+                                              type: Wait
+                                              spec:
+                                                duration: <+input>
+                                              strategy: <+input>
+                            - stepGroup:
+                                identifier: sg2
+                                template:
+                                  templateInputs:
+                                    steps:
+                                      - parallel:
+                                          - step:
+                                              identifier: stepTemplate1
+                                              template:
+                                                templateInputs:
+                                                  type: ShellScript
+                                                  spec:
+                                                    source:
+                                                      type: Inline
+                                                      spec:
+                                                        script: <+input>
+                                          - step:
+                                              identifier: stepTemplate2
+                                              template:
+                                                templateInputs:
+                                                  type: Wait
+                                                  spec:
+                                                    duration: <+input>
+                                                  strategy: <+input>
+                                      - stepGroup:
+                                          identifier: stepGroup2
+                                          steps:
+                                            - step:
+                                                identifier: StepTemplate3
+                                                template:
+                                                  templateInputs:
+                                                    type: ShellScript
+                                                    spec:
+                                                      source:
+                                                        type: Inline
+                                                        spec:
+                                                          script: <+input>
+                                    variables:
+                                      - name: SGVar1
+                                        type: String
+                                        value: <+input>
+                                      - name: SGVar2
+                                        type: String
+                                        value: <+input>
+                        - step:
+                            identifier: st1
+                            template:
+                              templateInputs:
+                                type: ShellScript
+                                spec:
+                                  source:
+                                    type: Inline
+                                    spec:
+                                      script: <+input>
+          - stage:
+              name: projectStage
+              identifier: projectStage
+              tags: {}
+              template:
+                templateRef: projectStageTemplateBulkPhase2
+                versionLabel: v1
+                templateInputs:
+                  type: Custom
+                  spec:
+                    execution:
+                      steps:
+                        - parallel:
+                            - stepGroup:
+                                identifier: sgorg1
+                                template:
+                                  templateInputs:
+                                    steps:
+                                      - parallel:
+                                          - stepGroup:
+                                              identifier: sgTemplate
+                                              template:
+                                                templateInputs:
+                                                  steps:
+                                                    - parallel:
+                                                        - step:
+                                                            identifier: stepTemplate1
+                                                            template:
+                                                              templateInputs:
+                                                                type: ShellScript
+                                                                spec:
+                                                                  source:
+                                                                    type: Inline
+                                                                    spec:
+                                                                      script: <+input>
+                                                        - step:
+                                                            identifier: stepTemplate2
+                                                            template:
+                                                              templateInputs:
+                                                                type: Wait
+                                                                spec:
+                                                                  duration: <+input>
+                                                                strategy: <+input>
+                                                    - stepGroup:
+                                                        identifier: stepGroup2
+                                                        steps:
+                                                          - step:
+                                                              identifier: StepTemplate3
+                                                              template:
+                                                                templateInputs:
+                                                                  type: ShellScript
+                                                                  spec:
+                                                                    source:
+                                                                      type: Inline
+                                                                      spec:
+                                                                        script: <+input>
+                                                  variables:
+                                                    - name: SGVar1
+                                                      type: String
+                                                      value: <+input>
+                                                    - name: SGVar2
+                                                      type: String
+                                                      value: <+input>
+                                          - step:
+                                              identifier: stepTemplate1
+                                              template:
+                                                templateInputs:
+                                                  type: ShellScript
+                                                  spec:
+                                                    source:
+                                                      type: Inline
+                                                      spec:
+                                                        script: <+input>
+                                      - step:
+                                          identifier: stepTemplate3
+                                          template:
+                                            templateInputs:
+                                              type: Wait
+                                              spec:
+                                                duration: <+input>
+                                              strategy: <+input>
+                            - stepGroup:
+                                identifier: sgOrg2
+                                template:
+                                  templateInputs:
+                                    steps:
+                                      - parallel:
+                                          - step:
+                                              identifier: stepTemplate1
+                                              template:
+                                                templateInputs:
+                                                  type: ShellScript
+                                                  spec:
+                                                    source:
+                                                      type: Inline
+                                                      spec:
+                                                        script: <+input>
+                                          - step:
+                                              identifier: stepTemplate2
+                                              template:
+                                                templateInputs:
+                                                  type: Wait
+                                                  spec:
+                                                    duration: <+input>
+                                                  strategy: <+input>
+                                      - stepGroup:
+                                          identifier: stepGroup2
+                                          steps:
+                                            - step:
+                                                identifier: StepTemplate3
+                                                template:
+                                                  templateInputs:
+                                                    type: ShellScript
+                                                    spec:
+                                                      source:
+                                                        type: Inline
+                                                        spec:
+                                                          script: <+input>
+                                    variables:
+                                      - name: SGVar1
+                                        type: String
+                                        value: <+input>
+                                      - name: SGVar2
+                                        type: String
+                                        value: <+input>
+      - stage:
+          name: s3
+          identifier: s3
+          description: ""
+          type: Custom
+          spec:
+            execution:
+              steps:
+                - parallel:
+                    - stepGroup:
+                        name: SGTemplate2
+                        identifier: SGTemplate2
+                        template:
+                          templateRef: account.stepGroup1bulkReconcilephase2
+                          versionLabel: v1
+                          templateInputs:
+                            steps:
+                              - parallel:
+                                  - step:
+                                      identifier: stepTemplate1
+                                      template:
+                                        templateInputs:
+                                          type: ShellScript
+                                          spec:
+                                            source:
+                                              type: Inline
+                                              spec:
+                                                script: <+input>
+                                  - step:
+                                      identifier: stepTemplate2
+                                      template:
+                                        templateInputs:
+                                          type: Wait
+                                          spec:
+                                            duration: <+input>
+                                          strategy: <+input>
+                              - stepGroup:
+                                  identifier: stepGroup2
+                                  steps:
+                                    - step:
+                                        identifier: StepTemplate3
+                                        template:
+                                          templateInputs:
+                                            type: ShellScript
+                                            spec:
+                                              source:
+                                                type: Inline
+                                                spec:
+                                                  script: <+input>
+                            variables:
+                              - name: SGVar1
+                                type: String
+                                value: <+input>
+                              - name: SGVar2
+                                type: String
+                                value: <+input>
+                    - stepGroup:
+                        name: SgTemplateORg
+                        identifier: SgTemplateORg
+                        template:
+                          templateRef: org.orgStepGroupBulkTemplate
+                          versionLabel: v1
+                          templateInputs:
+                            steps:
+                              - parallel:
+                                  - stepGroup:
+                                      identifier: sgTemplate
+                                      template:
+                                        templateInputs:
+                                          steps:
+                                            - parallel:
+                                                - step:
+                                                    identifier: stepTemplate1
+                                                    template:
+                                                      templateInputs:
+                                                        type: ShellScript
+                                                        spec:
+                                                          source:
+                                                            type: Inline
+                                                            spec:
+                                                              script: <+input>
+                                                - step:
+                                                    identifier: stepTemplate2
+                                                    template:
+                                                      templateInputs:
+                                                        type: Wait
+                                                        spec:
+                                                          duration: <+input>
+                                                        strategy: <+input>
+                                            - stepGroup:
+                                                identifier: stepGroup2
+                                                steps:
+                                                  - step:
+                                                      identifier: StepTemplate3
+                                                      template:
+                                                        templateInputs:
+                                                          type: ShellScript
+                                                          spec:
+                                                            source:
+                                                              type: Inline
+                                                              spec:
+                                                                script: <+input>
+                                          variables:
+                                            - name: SGVar1
+                                              type: String
+                                              value: <+input>
+                                            - name: SGVar2
+                                              type: String
+                                              value: <+input>
+                                  - step:
+                                      identifier: stepTemplate1
+                                      template:
+                                        templateInputs:
+                                          type: ShellScript
+                                          spec:
+                                            source:
+                                              type: Inline
+                                              spec:
+                                                script: <+input>
+                              - step:
+                                  identifier: stepTemplate3
+                                  template:
+                                    templateInputs:
+                                      type: Wait
+                                      spec:
+                                        duration: <+input>
+                                      strategy: <+input>
+                - step:
+                    name: accountStepTemplate
+                    identifier: accountStepTemplate
+                    template:
+                      templateRef: account.stepBulkReconcilephase2
+                      versionLabel: v1
+                      templateInputs:
+                        type: ShellScript
+                        timeout: <+input>
+                        spec:
+                          source:
+                            type: Inline
+                            spec:
+                              script: <+input>
+          tags: {}

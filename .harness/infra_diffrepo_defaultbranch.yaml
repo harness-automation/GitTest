@@ -1,0 +1,13 @@
+infrastructureDefinition:
+  name: infra_diffrepo_defaultbranch
+  identifier: infra_diffrepo_defaultbranch
+  orgIdentifier: default
+  projectIdentifier: samarth_overrides
+  environmentRef: remote_env_test_default
+  deploymentType: Kubernetes
+  type: KubernetesDirect
+  spec:
+    connectorRef: <+input>
+    namespace: resdrftyudx
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
+  allowSimultaneousDeployments: false

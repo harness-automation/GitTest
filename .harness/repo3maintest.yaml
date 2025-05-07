@@ -1,0 +1,30 @@
+pipeline:
+  name: repo3-main-test
+  identifier: repo3maintest
+  projectIdentifier: DoNotDelete_ElasticBugBash
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: cs1
+        identifier: cs1
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo HI
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
