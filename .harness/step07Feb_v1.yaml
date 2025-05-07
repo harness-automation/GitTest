@@ -1,0 +1,29 @@
+template:
+  name: step-07Feb
+  identifier: step07Feb
+  versionLabel: v1
+  type: Step
+  projectIdentifier: AmitTest
+  orgIdentifier: Pipelines_NonK8s_Org_NG
+  tags: {}
+  spec:
+    timeout: 10m
+    type: ShellScript
+    spec:
+      shell: Bash
+      executionTarget: {}
+      delegateSelectors: []
+      source:
+        type: Inline
+        spec:
+          script: |-
+            echo 
+            export value2 = value2
+      environmentVariables:
+        - name: inp1
+          type: String
+          value: value1
+      outputVariables:
+        - name: inp2
+          type: String
+          value: value2

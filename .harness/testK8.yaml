@@ -1,0 +1,22 @@
+service:
+  name: testK8
+  identifier: testK8
+  orgIdentifier: default
+  projectIdentifier: ShivamRoleRBAC
+  serviceDefinition:
+    spec:
+      variables:
+        - name: var1
+          type: String
+          description: ""
+          required: false
+          value: <+input>
+      artifacts:
+        primary:
+          primaryArtifactRef: <+input>
+          sources:
+            - identifier: k9
+              spec:
+                version: <+input>
+              type: CustomArtifact
+    type: Kubernetes

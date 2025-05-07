@@ -1,0 +1,132 @@
+template:
+  name: projectStageTemplateBulkPhase2
+  identifier: projectStageTemplateBulkPhase2
+  versionLabel: v1
+  type: Stage
+  projectIdentifier: AmitTest
+  orgIdentifier: Pipelines_NonK8s_Org_NG
+  tags: {}
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - parallel:
+              - stepGroup:
+                  name: sgorg1
+                  identifier: sgorg1
+                  template:
+                    templateRef: org.orgStepGroupBulkTemplate
+                    versionLabel: v1
+                    templateInputs:
+                      steps:
+                        - parallel:
+                            - stepGroup:
+                                identifier: sgTemplate
+                                template:
+                                  templateInputs:
+                                    steps:
+                                      - parallel:
+                                          - step:
+                                              identifier: stepTemplate1
+                                              template:
+                                                templateInputs:
+                                                  type: ShellScript
+                                                  spec:
+                                                    source:
+                                                      type: Inline
+                                                      spec:
+                                                        script: <+input>
+                                          - step:
+                                              identifier: stepTemplate2
+                                              template:
+                                                templateInputs:
+                                                  type: Wait
+                                                  spec:
+                                                    duration: <+input>
+                                                  strategy: <+input>
+                                      - stepGroup:
+                                          identifier: stepGroup2
+                                          steps:
+                                            - step:
+                                                identifier: StepTemplate3
+                                                template:
+                                                  templateInputs:
+                                                    type: ShellScript
+                                                    spec:
+                                                      source:
+                                                        type: Inline
+                                                        spec:
+                                                          script: <+input>
+                                    variables:
+                                      - name: SGVar1
+                                        type: String
+                                        value: <+input>
+                                      - name: SGVar2
+                                        type: String
+                                        value: <+input>
+                            - step:
+                                identifier: stepTemplate1
+                                template:
+                                  templateInputs:
+                                    type: ShellScript
+                                    spec:
+                                      source:
+                                        type: Inline
+                                        spec:
+                                          script: <+input>
+                        - step:
+                            identifier: stepTemplate3
+                            template:
+                              templateInputs:
+                                type: Wait
+                                spec:
+                                  duration: <+input>
+                                strategy: <+input>
+              - stepGroup:
+                  name: sgOrg2
+                  identifier: sgOrg2
+                  template:
+                    templateRef: account.stepGroup1bulkReconcilephase2
+                    versionLabel: v1
+                    templateInputs:
+                      steps:
+                        - parallel:
+                            - step:
+                                identifier: stepTemplate1
+                                template:
+                                  templateInputs:
+                                    type: ShellScript
+                                    spec:
+                                      source:
+                                        type: Inline
+                                        spec:
+                                          script: <+input>
+                            - step:
+                                identifier: stepTemplate2
+                                template:
+                                  templateInputs:
+                                    type: Wait
+                                    spec:
+                                      duration: <+input>
+                                    strategy: <+input>
+                        - stepGroup:
+                            identifier: stepGroup2
+                            steps:
+                              - step:
+                                  identifier: StepTemplate3
+                                  template:
+                                    templateInputs:
+                                      type: ShellScript
+                                      spec:
+                                        source:
+                                          type: Inline
+                                          spec:
+                                            script: <+input>
+                      variables:
+                        - name: SGVar1
+                          type: String
+                          value: <+input>
+                        - name: SGVar2
+                          type: String
+                          value: <+input>

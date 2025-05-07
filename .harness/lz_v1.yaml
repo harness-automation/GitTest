@@ -1,0 +1,14 @@
+template:
+  name: lz
+  identifier: lz
+  versionLabel: v1
+  type: Pipeline
+  tags: {}
+  spec:
+    stages:
+      - stage:
+          name: m
+          identifier: m
+          template:
+            templateRef: account.xxx
+            versionLabel: v1

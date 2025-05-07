@@ -1,0 +1,52 @@
+template:
+  name: stage 2
+  identifier: stage_2
+  versionLabel: v2
+  type: Stage
+  tags: {}
+  spec:
+    type: Approval
+    spec:
+      execution:
+        steps:
+          - step:
+              name: t1
+              identifier: t1
+              type: HarnessApproval
+              timeout: 1d
+              spec:
+                approvalMessage: |-
+                  Please review the following information
+                  and approve the pipeline progression
+                includePipelineExecutionHistory: true
+                approvers:
+                  minimumCount: 1
+                  disallowPipelineExecutor: false
+                  userGroups: <+input>
+                approverInputs: []
+          - step:
+              name: t2
+              identifier: t2
+              template:
+                templateRef: account.step_3
+                versionLabel: v3
+                templateInputs:
+                  type: ShellScript
+                  spec:
+                    source:
+                      type: Inline
+                      spec:
+                        script: <+input>
+          - step:
+              name: t3
+              identifier: t3
+              template:
+                templateRef: account.step_4
+                versionLabel: v4
+                templateInputs:
+                  type: ShellScript
+                  spec:
+                    source:
+                      type: Inline
+                      spec:
+                        script: <+input>
