@@ -1,0 +1,22 @@
+inputSet:
+  name: gfgfg
+  identifier: gfgfg
+  orgIdentifier: default
+  projectIdentifier: ShivamRoleRBAC
+  pipeline:
+    identifier: fdfdf
+    stages:
+      - stage:
+          identifier: fd
+          type: Custom
+          spec:
+            execution:
+              steps:
+                - step:
+                    identifier: ShellScript_1
+                    type: ShellScript
+                    spec:
+                      source:
+                        type: Inline
+                        spec:
+                          script: gfgg

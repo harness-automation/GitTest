@@ -1,0 +1,15 @@
+infrastructureDefinition:
+  name: infra1_remote_1
+  identifier: infra1_remote_1
+  description: test_1
+  tags:
+    tags: ""
+  orgIdentifier: default
+  environmentRef: temp
+  deploymentType: Kubernetes
+  type: KubernetesDirect
+  spec:
+    connectorRef: <+input>
+    namespace: <+namesapce>
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
+  allowSimultaneousDeployments: false
