@@ -1,0 +1,28 @@
+pipeline:
+  name: pipe3 march10
+  identifier: pipe3_march10
+  projectIdentifier: AmitTest
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: S1
+        identifier: S1
+        template:
+          templateRef: stage1_march10
+          versionLabel: "1"
+          templateInputs:
+            type: Custom
+            spec:
+              execution:
+                steps:
+                  - step:
+                      identifier: s1
+                      template:
+                        templateInputs:
+                          type: ShellScript
+                          spec:
+                            source:
+                              type: Inline
+                              spec:
+                                script: <+input>

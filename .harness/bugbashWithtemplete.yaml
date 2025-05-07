@@ -1,0 +1,10 @@
+pipeline:
+  name: bugbashWithtemplete
+  identifier: bugbashWithtemplete
+  tags: {}
+  template:
+    templateRef: pipelineTemplate22Feb
+    versionLabel: "1"
+    gitBranch: 14march
+  projectIdentifier: AmitTest
+  orgIdentifier: Pipelines_NonK8s_Org_NG
