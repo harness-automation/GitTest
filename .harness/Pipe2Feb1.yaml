@@ -1,0 +1,28 @@
+pipeline:
+  name: Pipe2Feb1
+  identifier: Pipe2Feb1
+  projectIdentifier: AmitTest
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - parallel:
+        - stage:
+            name: Stage1
+            identifier: Stage1
+            template:
+              templateRef: stageTemplateRepo
+              versionLabel: "1"
+        - stage:
+            name: stage2
+            identifier: stage2
+            template:
+              templateRef: Stage1Caching
+              versionLabel: "1"
+              templateInputs:
+                type: Deployment
+                spec:
+                  infrastructure:
+                    infrastructureDefinition:
+                      type: KubernetesDirect
+                      spec:
+                        connectorRef: <+input>

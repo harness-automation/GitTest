@@ -1,0 +1,37 @@
+template:
+  name: stepGroupTemplateFlexi24Feb
+  identifier: stepGroupTemplateFlexi24Feb
+  type: StepGroup
+  tags: {}
+  spec:
+    stageType: Deployment
+    steps:
+      - step:
+          name: step3
+          identifier: step3
+          template:
+            templateRef: account.StepFlexiTemplate24Feb
+            versionLabel: v1
+            templateInputs:
+              type: ShellScript
+              spec:
+                source:
+                  type: Inline
+                  spec:
+                    script: <+input>
+                environmentVariables:
+                  - name: inp1
+                    type: String
+                    value: test
+    variables:
+      - name: var2
+        type: String
+        value: <+input>
+        description: ""
+        required: false
+      - name: var3
+        type: String
+        value: <+pipeline.name>
+        description: ""
+        required: false
+  versionLabel: v2

@@ -1,0 +1,13 @@
+infrastructureDefinition:
+  name: test_infra123
+  identifier: test_infra1
+  description: test
+  orgIdentifier: default
+  environmentRef: env1_remote
+  deploymentType: Kubernetes
+  type: KubernetesDirect
+  spec:
+    connectorRef: <+input>
+    namespace: <+input>
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
+  allowSimultaneousDeployments: false

@@ -1,0 +1,6 @@
+environment:
+  name: envBugBashRemote
+  identifier: envBugBashRemote
+  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  projectIdentifier: DoNotDelete_Brooke2
+  type: Production
