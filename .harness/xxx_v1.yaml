@@ -1,0 +1,19 @@
+template:
+  name: rdxx
+  identifier: xxx
+  versionLabel: v1
+  type: Stage
+  tags: {}
+  spec:
+    type: Approval
+    spec:
+      execution:
+        steps:
+          - step:
+              name: me
+              identifier: zz
+              template:
+                templateRef: account.zz
+                versionLabel: v1
+                gitBranch: main
+    approvalType: HarnessApproval

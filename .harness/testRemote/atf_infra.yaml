@@ -1,0 +1,14 @@
+infrastructureDefinition:
+ name: infra123
+ identifier: infra123
+ description: ""
+ orgIdentifier: default
+ projectIdentifier: TFtesting
+ environmentRef: env123
+ deploymentType: Kubernetes
+ type: KubernetesDirect
+ spec:
+  connectorRef: account.gfgf
+  namespace: asdasdsa
+  releaseName: release-<+INFRA_KEY>
+  allowSimultaneousDeployments: false

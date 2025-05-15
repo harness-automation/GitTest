@@ -1,0 +1,24 @@
+inputSet:
+  name: pl_auto_inputset_AHO4X
+  identifier: pl_auto_inputset_AHO4X
+  tags: {}
+  orgIdentifier: Simlified_Git_sync
+  projectIdentifier: SimplifiedGitSync_Do_Not_Delete   #need to be changed
+  pipeline:
+    identifier: pl_auto_pipeline_xH2YA
+    stages:
+      - stage:
+          identifier: s1
+          type: Custom
+          spec:
+            execution:
+              steps:
+                - step:
+                    identifier: ShellScript_1
+                    type: ShellScript
+                    spec:
+                      source:
+                        type: Inline
+                        spec:
+                          script: echo 'hi'
+

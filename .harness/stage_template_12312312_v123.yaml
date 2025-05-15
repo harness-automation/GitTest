@@ -1,0 +1,19 @@
+template:
+  name: stage template 12312312
+  identifier: stage_template_12312312
+  versionLabel: v123
+  type: Stage
+  projectIdentifier: AmitGitX
+  orgIdentifier: default
+  tags: {}
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - step:
+              name: cxv
+              identifier: cxv
+              template:
+                templateRef: step_tempalte_124123
+                versionLabel: vdfg

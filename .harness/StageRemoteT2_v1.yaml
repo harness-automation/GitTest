@@ -1,0 +1,17 @@
+template:
+  name: StageRemoteT2
+  identifier: StageRemoteT2
+  versionLabel: v1
+  type: Stage
+  tags: {}
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - step:
+              name: p12
+              identifier: p12
+              template:
+                templateRef: account.StepRemoteTemplateT1
+                versionLabel: v1
