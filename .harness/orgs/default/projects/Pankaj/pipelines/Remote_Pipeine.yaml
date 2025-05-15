@@ -1,0 +1,58 @@
+pipeline:
+  name: Remote Pipeine
+  identifier: Remote_Pipeine
+  projectIdentifier: Pankaj
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: S1
+        identifier: S1
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_3
+                  identifier: ShellScript_3
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo Hello World 3
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: <+input>
+              - step:
+                  type: ShellScript
+                  name: ShellScript_4
+                  identifier: ShellScript_4
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo Hello World 4
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: <+input>
+              - step:
+                  type: ShellScript
+                  name: ShellScript_6
+                  identifier: ShellScript_6
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo Hello World 4
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: <+input>
+        tags: {}
