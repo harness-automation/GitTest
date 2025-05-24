@@ -1,0 +1,138 @@
+pipeline:
+  name: SBOM-Creation
+  identifier: SBOMCreation
+  projectIdentifier: AmitTest123
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: Image List
+        identifier: Image_List
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: Get List Of Images
+                  identifier: Get_List_Of_Images
+                  spec:
+                    shell: Bash
+                    source:
+                      type: Inline
+                      spec:
+                        script: |
+                          #!/bin/bash
+
+                          ####################### INPUT SET ########################
+                          # export INPUT=<+pipeline.variables.Services>
+                          BRANCH=<+pipeline.variables.BRANCH>
+                          GITHUB_SECRET=<+stage.variables.GITHUB_ACCESS_TOKEN>
+                          ##########################################################
+
+                          #################################### YQ INSTALL ####################################
+                          wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+                          chmod a+x /usr/local/bin/yq
+                          yq --version
+                          ###################################################################################
+
+                          #clone in a specific directory to ensure regular cleanup
+                          UNIQUE_ID=<+pipeline.sequenceId>
+                          BUILD_DIR=/tmp/$UNIQUE_ID
+                          mkdir -p $BUILD_DIR
+                          cd $BUILD_DIR
+
+                          ############################################### CLONE THE REPO ########################################
+                              git config --global user.email "bot2@harness.io"
+                              git config --global user.name "bot2-harness"
+                              rm -rf harness-pl-infra
+                              git clone  https://bot2-harness:${GITHUB_SECRET}@github.com/harness/helm-charts.git
+                              HARNESS_HELM_DIR=$(pwd)/helm-charts
+                          #####################################################################################################
+
+                          ################################### GCLOUD AUTH #######################################
+
+                          cd $HARNESS_HELM_DIR/src/harness/
+                          git checkout $BRANCH 
+                          git pull
+                          images=($(grep -e "signed" images.txt | awk '{gsub(/^(docker.io\/|docker\/)/, ""); print $1}' | paste -sd ","))
+                    environmentVariables: []
+                    outputVariables:
+                      - name: images
+                        type: String
+                        value: images
+                    executionTarget: {}
+                  timeout: 10m
+        tags: {}
+        variables:
+          - name: GITHUB_ACCESS_TOKEN
+            type: Secret
+            description: ""
+            required: false
+            value: account.githubbotharnesstoken
+        when:
+          pipelineStatus: Success
+    - stage:
+        name: SBOM_Publish
+        identifier: SBOM_Publish
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: false
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: account.harnessciplatformng
+              namespace: harness-featurebuild
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: SscaOrchestration
+                  name: SscaOrchestration
+                  identifier: SscaOrchestration
+                  spec:
+                    attestation:
+                      type: cosign
+                      spec:
+                        privateKey: account.cosignprivatekey
+                        password: account.sscapwd
+                    source:
+                      type: image
+                      spec:
+                        connector: sbomdockerhub
+                        image: harness/batch-processing-signed:81102-000
+                    tool:
+                      type: Syft
+                      spec:
+                        format: cyclonedx-json
+                    mode: generation
+                    resources:
+                      limits:
+                        memory: 4Gi
+                        cpu: "1"
+          sharedPaths:
+            - /var/run
+          caching:
+            enabled: false
+            paths: []
+          slsa_provenance:
+            enabled: false
+        when:
+          pipelineStatus: Success
+          condition: "false"
+    - stage:
+        name: SBOM
+        identifier: SBOM
+        template:
+          templateRef: SBOM
+          versionLabel: v1
+  variables:
+    - name: BRANCH
+      type: String
+      description: ""
+      required: true
+      value: <+input>
