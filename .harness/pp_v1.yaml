@@ -1,0 +1,15 @@
+template:
+  name: pp
+  identifier: pp
+  versionLabel: v1
+  type: Pipeline
+  tags: {}
+  spec:
+    stages:
+      - stage:
+          name: ll
+          identifier: ll
+          template:
+            templateRef: account.pl_auto_template_ygOsX
+            versionLabel: v3
+            gitBranch: main

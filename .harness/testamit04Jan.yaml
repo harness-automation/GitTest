@@ -1,0 +1,29 @@
+pipeline:
+  name: testamit04Jan
+  identifier: testamit04Jan
+  projectIdentifier: AmitTest123
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: S123
+        identifier: S123
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  name: s123
+                  identifier: s123
+                  template:
+                    templateRef: step123
+                    versionLabel: v1
+                    templateInputs:
+                      type: ShellScript
+                      spec:
+                        source:
+                          type: Inline
+                          spec:
+                            script: <+input>
+        tags: {}

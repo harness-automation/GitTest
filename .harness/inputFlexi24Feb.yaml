@@ -1,0 +1,199 @@
+inputSet:
+  pipeline:
+    identifier: flexiTemplatePipeline1
+    template:
+      templateInputs:
+        stages:
+          - parallel:
+              - stage:
+                  identifier: stage1
+                  type: Deployment
+                  spec:
+                    environment:
+                      environmentRef: E1
+                      infrastructureDefinitions:
+                        - identifier: Infra
+                    service:
+                      serviceRef: test24FebService
+                    execution:
+                      steps:
+                        - parallel:
+                            - insert:
+                                identifier: insert1
+                                steps: <+input>
+                            - step:
+                                identifier: ShellScript_1
+                                type: ShellScript
+                                spec:
+                                  source:
+                                    type: Inline
+                                    spec:
+                                      script: echo 'hi'
+                        - insert:
+                            identifier: insert2
+                            steps: <+input>
+              - stage:
+                  identifier: stage2
+                  template:
+                    templateInputs:
+                      type: Deployment
+                      spec:
+                        environment:
+                          environmentRef: E1
+                          infrastructureDefinitions:
+                            - identifier: Infra
+                        service:
+                          serviceRef: test24FebService
+                        execution:
+                          steps:
+                            - parallel:
+                                - stepGroup:
+                                    identifier: testGroup1
+                                    template:
+                                      templateInputs:
+                                        steps:
+                                          - step:
+                                              identifier: stepTemplate1
+                                              template:
+                                                templateInputs:
+                                                  type: ShellScript
+                                                  spec:
+                                                    source:
+                                                      type: Inline
+                                                      spec:
+                                                        script: echo 'hi'
+                                                    environmentVariables:
+                                                      - name: inp1
+                                                        type: String
+                                                        value: <+input>
+                                                      - name: inp2
+                                                        type: String
+                                                        value: <+input>
+                                          - stepGroup:
+                                              identifier: stepGroup1
+                                              steps:
+                                                - step:
+                                                    identifier: stepTemplate4
+                                                    template:
+                                                      templateInputs:
+                                                        type: ShellScript
+                                                        spec:
+                                                          source:
+                                                            type: Inline
+                                                            spec:
+                                                              script: echo 'hi'
+                                                          environmentVariables:
+                                                            - name: inp1
+                                                              type: String
+                                                              value: <+input>
+                                                            - name: inp2
+                                                              type: String
+                                                              value: <+input>
+                                              variables:
+                                                - name: var3
+                                                  type: String
+                                                  value: <+input>
+                                                - name: var4
+                                                  type: String
+                                                  value: <+input>
+                                        variables:
+                                          - name: var1
+                                            type: String
+                                            value: test
+                                          - name: var2
+                                            type: String
+                                            value: test3
+                                - insert:
+                                    identifier: insert1
+                                    steps: <+input>
+                            - step:
+                                identifier: step123
+                                template:
+                                  templateInputs:
+                                    type: ShellScript
+                                    spec:
+                                      source:
+                                        type: Inline
+                                        spec:
+                                          script: echo 'hi'
+                                      environmentVariables:
+                                        - name: inp1
+                                          type: String
+                                          value: <+input>
+                                        - name: inp2
+                                          type: String
+                                          value: <+input>
+                            - insert:
+                                identifier: insert2
+                                steps: <+input>
+                          rollbackSteps:
+                            - parallel:
+                                - stepGroup:
+                                    identifier: rollbackCheck1
+                                    template:
+                                      templateInputs:
+                                        steps:
+                                          - step:
+                                              identifier: stepTemplate1
+                                              template:
+                                                templateInputs:
+                                                  type: ShellScript
+                                                  spec:
+                                                    source:
+                                                      type: Inline
+                                                      spec:
+                                                        script: echo 'hi'
+                                                    environmentVariables:
+                                                      - name: inp1
+                                                        type: String
+                                                        value: <+input>
+                                                      - name: inp2
+                                                        type: String
+                                                        value: <+input>
+                                          - stepGroup:
+                                              identifier: stepGroup1
+                                              steps:
+                                                - step:
+                                                    identifier: stepTemplate4
+                                                    template:
+                                                      templateInputs:
+                                                        type: ShellScript
+                                                        spec:
+                                                          source:
+                                                            type: Inline
+                                                            spec:
+                                                              script: echo 'hi'
+                                                          environmentVariables:
+                                                            - name: inp1
+                                                              type: String
+                                                              value: <+input>
+                                                            - name: inp2
+                                                              type: String
+                                                              value: <+input>
+                                              variables:
+                                                - name: var3
+                                                  type: String
+                                                  value: <+input>
+                                                - name: var4
+                                                  type: String
+                                                  value: <+input>
+                                        variables:
+                                          - name: var1
+                                            type: String
+                                            value: <+input>
+                                          - name: var2
+                                            type: String
+                                            value: <+input>
+                                - insert:
+                                    identifier: insert3
+                                    steps: <+input>
+                            - insert:
+                                identifier: insert4
+                                steps: <+input>
+          - insert:
+              identifier: insert3
+              stages: <+input>
+  name: inputFlexi24Feb
+  identifier: inputFlexi24Feb
+  orgIdentifier: Pipelines_NonK8s_Org_NG
+  projectIdentifier: AmitTest
