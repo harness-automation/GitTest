@@ -1,0 +1,11 @@
+template:
+  name: step2BulkReconcilephase2
+  identifier: step2BulkReconcilephase2
+  type: Step
+  tags: {}
+  spec:
+    type: Wait
+    spec:
+      duration: <+input>
+    strategy: <+input>
+  versionLabel: v2

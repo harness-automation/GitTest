@@ -1,0 +1,27 @@
+environment:
+  name: env123
+  identifier: env123
+  type: PreProduction
+  orgIdentifier: default
+  projectIdentifier: TFtesting
+  variables:
+    - name: var1
+      type: String
+      value: abc
+      description: ""
+      required: false
+  overrides:
+    manifests:
+      - manifest:
+          identifier: Manifest1
+          type: Values
+          spec:
+            store:
+              type: Github
+              spec:
+                connectorRef: <+input>
+                gitFetchType: Branch
+                paths:
+                  - .harness/
+                repoName: <+input>
+                branch: <+input>

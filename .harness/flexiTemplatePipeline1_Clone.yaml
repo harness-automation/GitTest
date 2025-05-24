@@ -1,0 +1,250 @@
+pipeline:
+  tags: {}
+  template:
+    templateRef: PipelineTemplateFlexi24Feb
+    versionLabel: v1
+    templateInputs:
+      stages:
+        - parallel:
+            - stage:
+                identifier: stage1
+                type: Deployment
+                spec:
+                  environment:
+                    environmentRef: E1
+                    infrastructureDefinitions:
+                      - identifier: Infra
+                  service:
+                    serviceRef: svc1
+                  execution:
+                    steps:
+                      - parallel:
+                          - insert:
+                              identifier: insert1
+                              steps:
+                                - step:
+                                    name: stepTemplate
+                                    identifier: stepTemplate
+                                    template:
+                                      templateRef: account.StepFlexiTemplate24Feb
+                                      versionLabel: v1
+                                      templateInputs:
+                                        type: ShellScript
+                                        spec:
+                                          source:
+                                            type: Inline
+                                            spec:
+                                              script: <+input>
+                                          environmentVariables:
+                                            - name: inp1
+                                              type: String
+                                              value: <+input>
+                          - step:
+                              identifier: ShellScript_1
+                              type: ShellScript
+                              spec:
+                                source:
+                                  type: Inline
+                                  spec:
+                                    script: <+input>
+                      - insert:
+                          identifier: insert2
+                          steps:
+                            - step:
+                                type: ShellScript
+                                name: ShellScript_3
+                                identifier: ShellScript_3
+                                spec:
+                                  shell: Bash
+                                  executionTarget: {}
+                                  source:
+                                    type: Inline
+                                    spec:
+                                      script: exit 1
+                                  environmentVariables: []
+                                  outputVariables: []
+                                timeout: 10m
+            - stage:
+                identifier: stage2
+                template:
+                  templateInputs:
+                    type: Deployment
+                    spec:
+                      environment:
+                        environmentRef: E1
+                        infrastructureDefinitions:
+                          - identifier: Infra
+                      service:
+                        serviceRef: svc1
+                      execution:
+                        steps:
+                          - parallel:
+                              - stepGroup:
+                                  identifier: testGroup1
+                                  template:
+                                    templateInputs:
+                                      steps:
+                                        - step:
+                                            identifier: stepTemplate1
+                                            template:
+                                              templateInputs:
+                                                type: ShellScript
+                                                spec:
+                                                  source:
+                                                    type: Inline
+                                                    spec:
+                                                      script: <+input>
+                                                  environmentVariables:
+                                                    - name: inp1
+                                                      type: String
+                                                      value: test1
+                                        - stepGroup:
+                                            identifier: stepGroup1
+                                            steps:
+                                              - step:
+                                                  identifier: stepTemplate4
+                                                  template:
+                                                    templateInputs:
+                                                      type: ShellScript
+                                                      spec:
+                                                        source:
+                                                          type: Inline
+                                                          spec:
+                                                            script: <+input>
+                                                        environmentVariables:
+                                                          - name: inp1
+                                                            type: String
+                                                            value: test3
+                                            variables:
+                                              - name: var3
+                                                type: String
+                                                value: test1
+                                              - name: var4
+                                                type: String
+                                                value: test2
+                                      variables:
+                                        - name: var1
+                                          type: String
+                                          value: test
+                                        - name: var2
+                                          type: String
+                                          value: test1
+                              - insert:
+                                  identifier: insert1
+                                  steps:
+                                    - step:
+                                        type: ShellScript
+                                        name: insertShellScript
+                                        identifier: insertShellScript
+                                        spec:
+                                          shell: Bash
+                                          executionTarget: {}
+                                          source:
+                                            type: Inline
+                                            spec:
+                                              script: <+input>
+                                          environmentVariables: []
+                                          outputVariables: []
+                                        timeout: 10m
+                          - step:
+                              identifier: step123
+                              template:
+                                templateInputs:
+                                  type: ShellScript
+                                  spec:
+                                    source:
+                                      type: Inline
+                                      spec:
+                                        script: <+input>
+                                    environmentVariables:
+                                      - name: inp1
+                                        type: String
+                                        value: test4
+                          - insert:
+                              identifier: insert2
+                              steps:
+                                - step:
+                                    type: ShellScript
+                                    name: Insert2ShellScript
+                                    identifier: Insert2ShellScript
+                                    spec:
+                                      shell: Bash
+                                      executionTarget: {}
+                                      source:
+                                        type: Inline
+                                        spec:
+                                          script: <+input>
+                                      environmentVariables: []
+                                      outputVariables: []
+                                    timeout: 10m
+                        rollbackSteps:
+                          - parallel:
+                              - stepGroup:
+                                  identifier: rollbackCheck1
+                                  template:
+                                    templateInputs:
+                                      steps:
+                                        - step:
+                                            identifier: step3
+                                            template:
+                                              templateInputs:
+                                                type: ShellScript
+                                                spec:
+                                                  source:
+                                                    type: Inline
+                                                    spec:
+                                                      script: <+input>
+                                      variables:
+                                        - name: var2
+                                          type: String
+                                          value: test5
+                              - insert:
+                                  identifier: insert3
+                                  steps: <+input>
+                          - insert:
+                              identifier: insert4
+                              steps:
+                                - step:
+                                    type: ShellScript
+                                    name: ShellScript_1
+                                    identifier: ShellScript_1
+                                    spec:
+                                      shell: Bash
+                                      executionTarget: {}
+                                      source:
+                                        type: Inline
+                                        spec:
+                                          script: echo 'rollback'
+                                      environmentVariables: []
+                                      outputVariables: []
+                                    timeout: 10m
+        - insert:
+            identifier: insert3
+            stages:
+              - stage:
+                  name: stage3
+                  identifier: stage3
+                  tags: {}
+                  template:
+                    templateRef: felxiStagetemplate_2_24Feb
+                    versionLabel: v1
+                    templateInputs:
+                      type: Deployment
+                      spec:
+                        execution:
+                          rollbackSteps:
+                            - step:
+                                identifier: ShellScript_1
+                                type: ShellScript
+                                spec:
+                                  source:
+                                    type: Inline
+                                    spec:
+                                      script: <+input>
+                            - insert:
+                                identifier: rollbackInsert
+                                steps: <+input>
+  projectIdentifier: AmitTest
+  orgIdentifier: Pipelines_NonK8s_Org_NG
+  identifier: flexiTemplatePipeline1_Clone
+  name: flexiTemplatePipeline1 - Clone

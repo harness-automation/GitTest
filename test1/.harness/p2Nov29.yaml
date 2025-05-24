@@ -1,0 +1,69 @@
+pipeline:
+  name: p2Nov29
+  identifier: p2Nov29
+  projectIdentifier: Demo2Check29Nov
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - parallel:
+        - stage:
+            name: fg
+            identifier: fg
+            template:
+              templateRef: nestedStage29Nov
+              versionLabel: "1"
+              templateInputs:
+                type: Custom
+                spec:
+                  execution:
+                    steps:
+                      - step:
+                          identifier: r5
+                          template:
+                            templateInputs:
+                              type: ShellScript
+                              spec:
+                                source:
+                                  type: Inline
+                                  spec:
+                                    script: <+input>
+        - stage:
+            name: ee
+            identifier: ee
+            template:
+              templateRef: nestedStage29Nov
+              versionLabel: "1"
+              templateInputs:
+                type: Custom
+                spec:
+                  execution:
+                    steps:
+                      - step:
+                          identifier: r5
+                          template:
+                            templateInputs:
+                              type: ShellScript
+                              spec:
+                                source:
+                                  type: Inline
+                                  spec:
+                                    script: <+input>
+    - stage:
+        name: ty
+        identifier: ty
+        template:
+          templateRef: StageInGitTestRepo
+          versionLabel: "1"
+          templateInputs:
+            type: Custom
+            spec:
+              execution:
+                steps:
+                  - step:
+                      identifier: erd
+                      type: ShellScript
+                      spec:
+                        source:
+                          type: Inline
+                          spec:
+                            script: <+input>

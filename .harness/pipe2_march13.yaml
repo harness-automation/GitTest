@@ -1,0 +1,22 @@
+pipeline:
+  name: pipe2 march13
+  identifier: pipe2_march13
+  projectIdentifier: AmitTest
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: S1
+        identifier: S1
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  name: q1
+                  identifier: q1
+                  template:
+                    templateRef: step1_march10
+                    versionLabel: "1"
+        tags: {}

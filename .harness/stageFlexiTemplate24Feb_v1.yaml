@@ -1,0 +1,149 @@
+template:
+  name: stageFlexiTemplate24Feb
+  identifier: stageFlexiTemplate24Feb
+  versionLabel: v1
+  type: Stage
+  tags: {}
+  spec:
+    type: Deployment
+    spec:
+      deploymentType: Kubernetes
+      environment:
+        environmentRef: <+input>
+        deployToAll: false
+        environmentInputs: <+input>
+        serviceOverrideInputs: <+input>
+        infrastructureDefinitions: <+input>
+      service:
+        serviceRef: <+input>
+        serviceInputs: <+input>
+      execution:
+        steps:
+          - parallel:
+              - stepGroup:
+                  name: testGroup1
+                  identifier: testGroup1
+                  template:
+                    templateRef: account.stepGroupTemplateFlexi24Feb
+                    versionLabel: v1
+                    templateInputs:
+                      steps:
+                        - step:
+                            identifier: stepTemplate1
+                            template:
+                              templateInputs:
+                                type: ShellScript
+                                spec:
+                                  source:
+                                    type: Inline
+                                    spec:
+                                      script: <+input>
+                                  environmentVariables:
+                                    - name: inp1
+                                      type: String
+                                      value: <+input>
+                        - stepGroup:
+                            identifier: stepGroup1
+                            steps:
+                              - step:
+                                  identifier: stepTemplate4
+                                  template:
+                                    templateInputs:
+                                      type: ShellScript
+                                      spec:
+                                        source:
+                                          type: Inline
+                                          spec:
+                                            script: <+input>
+                                        environmentVariables:
+                                          - name: inp1
+                                            type: String
+                                            value: <+input>
+                            variables:
+                              - name: var3
+                                type: String
+                                value: <+input>
+                              - name: var4
+                                type: String
+                                value: <+input>
+                      variables:
+                        - name: var1
+                          type: String
+                          value: <+input>
+                        - name: var2
+                          type: String
+                          value: <+input>
+              - insert:
+                  name: insert1
+                  identifier: insert1
+                  steps: <+input>
+          - step:
+              name: step123
+              identifier: step123
+              template:
+                templateRef: account.StepFlexiTemplate24Feb
+                versionLabel: v1
+                templateInputs:
+                  type: ShellScript
+                  spec:
+                    source:
+                      type: Inline
+                      spec:
+                        script: <+input>
+                    environmentVariables:
+                      - name: inp1
+                        type: String
+                        value: <+input>
+          - insert:
+              name: insert2
+              identifier: insert2
+              steps: <+input>
+        rollbackSteps:
+          - parallel:
+              - stepGroup:
+                  name: rollbackCheck1
+                  identifier: rollbackCheck1
+                  template:
+                    templateRef: account.stepGroupTemplateFlexi24Feb
+                    versionLabel: v2
+                    templateInputs:
+                      steps:
+                        - step:
+                            identifier: step3
+                            template:
+                              templateInputs:
+                                type: ShellScript
+                                spec:
+                                  source:
+                                    type: Inline
+                                    spec:
+                                      script: <+input>
+                      variables:
+                        - name: var2
+                          type: String
+                          value: <+input>
+              - insert:
+                  name: insert3
+                  identifier: insert3
+                  steps: <+input>
+          - insert:
+              name: insert4
+              identifier: insert4
+              steps: <+input>
+    failureStrategies:
+      - onFailure:
+          errors:
+            - AllErrors
+          action:
+            type: ManualIntervention
+            spec:
+              timeout: 2m
+              onTimeout:
+                action:
+                  type: PipelineRollback
+    variables:
+      - name: var1
+        type: String
+        description: ""
+        required: false
+        value: <+input>

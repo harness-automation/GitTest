@@ -1,0 +1,27 @@
+template:
+  name: StageInGitTestRepo
+  identifier: StageInGitTestRepo
+  versionLabel: "1"
+  type: Stage
+  projectIdentifier: Demo2Check29Nov
+  orgIdentifier: default
+  tags: {}
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - step:
+              type: ShellScript
+              name: erd
+              identifier: erd
+              spec:
+                shell: Bash
+                onDelegate: true
+                source:
+                  type: Inline
+                  spec:
+                    script: <+input>
+                environmentVariables: []
+                outputVariables: []
+              timeout: 10m

@@ -1,0 +1,36 @@
+inputSet:
+  name: Set1Feb1
+  identifier: Set1Feb1
+  orgIdentifier: default
+  projectIdentifier: AmitTest
+  pipeline:
+    identifier: Pipe2Feb1
+    stages:
+      - parallel:
+          - stage:
+              identifier: Stage1
+              template:
+                templateInputs:
+                  type: Custom
+                  spec:
+                    execution:
+                      steps:
+                        - step:
+                            identifier: ShellScript_1
+                            type: ShellScript
+                            spec:
+                              source:
+                                type: Inline
+                                spec:
+                                  script: echo 'hi updated check'
+          - stage:
+              identifier: stage2
+              template:
+                templateInputs:
+                  type: Deployment
+                  spec:
+                    infrastructure:
+                      infrastructureDefinition:
+                        type: KubernetesDirect
+                        spec:
+                          connectorRef: account.k8s_acc_con

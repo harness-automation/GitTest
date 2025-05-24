@@ -1,0 +1,31 @@
+pipeline:
+  name: Selective Stage Execution Selective Stage Execution Selective Stage Execution
+  identifier: Selective_Stage_Execution
+  tags: {}
+  template:
+    templateRef: Selective_Stage_Execution
+    versionLabel: V1
+    templateInputs:
+      stages:
+        - stage:
+            identifier: S1
+            type: Custom
+            spec:
+              execution:
+                steps:
+                  - step:
+                      identifier: ShellScript_1
+                      type: ShellScript
+                      timeout: <+input>
+        - stage:
+            identifier: S2
+            type: Custom
+            spec:
+              execution:
+                steps:
+                  - step:
+                      identifier: ShellScript_1
+                      type: ShellScript
+                      timeout: <+input>
+  projectIdentifier: Pankaj
+  orgIdentifier: default

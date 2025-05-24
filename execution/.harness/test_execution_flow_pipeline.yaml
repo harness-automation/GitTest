@@ -1,0 +1,139 @@
+pipeline:
+  name: test execution flow pipeline
+  identifier: test_execution_flow_pipeline
+  projectIdentifier: AmitTest
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: t1
+        identifier: t1
+        template:
+          templateRef: account.stage_1
+          versionLabel: v1
+          templateInputs:
+            type: Approval
+            spec:
+              execution:
+                steps:
+                  - step:
+                      identifier: t2
+                      template:
+                        templateInputs:
+                          type: ShellScript
+                          spec:
+                            source:
+                              type: Inline
+                              spec:
+                                script: <+input>
+                  - step:
+                      identifier: t3
+                      template:
+                        templateInputs:
+                          type: ShellScript
+                          spec:
+                            source:
+                              type: Inline
+                              spec:
+                                script: <+input>
+    - stage:
+        name: t2
+        identifier: t2
+        template:
+          templateRef: account.stage_2
+          versionLabel: v2
+          templateInputs:
+            type: Approval
+            spec:
+              execution:
+                steps:
+                  - step:
+                      identifier: t1
+                      type: HarnessApproval
+                      spec:
+                        approvers:
+                          userGroups: <+input>
+                  - step:
+                      identifier: t2
+                      template:
+                        templateInputs:
+                          type: ShellScript
+                          spec:
+                            source:
+                              type: Inline
+                              spec:
+                                script: <+input>
+                  - step:
+                      identifier: t3
+                      template:
+                        templateInputs:
+                          type: ShellScript
+                          spec:
+                            source:
+                              type: Inline
+                              spec:
+                                script: <+input>
+    - stage:
+        name: t3
+        identifier: t3
+        template:
+          templateRef: account.stage_3
+          versionLabel: v3
+          templateInputs:
+            type: Approval
+            spec:
+              execution:
+                steps:
+                  - step:
+                      identifier: t1
+                      template:
+                        templateInputs:
+                          type: ShellScript
+                          spec:
+                            source:
+                              type: Inline
+                              spec:
+                                script: <+input>
+                  - step:
+                      identifier: rt2
+                      template:
+                        templateInputs:
+                          type: ShellScript
+                          spec:
+                            source:
+                              type: Inline
+                              spec:
+                                script: <+input>
+    - stage:
+        name: t4
+        identifier: t4
+        template:
+          templateRef: account.stage_4
+          versionLabel: v4
+          templateInputs:
+            type: Approval
+            spec:
+              execution:
+                steps:
+                  - step:
+                      identifier: t1
+                      template:
+                        templateInputs:
+                          type: ShellScript
+                          spec:
+                            source:
+                              type: Inline
+                              spec:
+                                script: <+input>
+                  - step:
+                      identifier: t8
+                      template:
+                        templateInputs:
+                          type: ShellScript
+                          spec:
+                            source:
+                              type: Inline
+                              spec:
+                                script: <+input>
+  delegateSelectors:
+    - mohit

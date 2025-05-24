@@ -1,0 +1,22 @@
+template:
+  name: stepBulkReconcilephase2
+  identifier: stepBulkReconcilephase2
+  versionLabel: v1
+  type: Step
+  tags: {}
+  spec:
+    timeout: <+input>
+    type: ShellScript
+    spec:
+      shell: Bash
+      executionTarget: {}
+      delegateSelectors: []
+      source:
+        type: Inline
+        spec:
+          script: echo 'update test'
+      environmentVariables:
+        - name: inp1
+          type: String
+          value: <+input>
+      outputVariables: []
